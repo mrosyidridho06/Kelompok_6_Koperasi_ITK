@@ -38,4 +38,4 @@ class Produk:
 
 prod = Produk()
 prod.setNama_produk(input("masukkan nama produk : "))
-print(prod.setNama_produk())
+print(prod.getNama_produk())
