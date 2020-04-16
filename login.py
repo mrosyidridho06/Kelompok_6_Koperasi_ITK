@@ -26,18 +26,19 @@ a = login()
 
 def masuk():
     max = 3
+    a.setStatus=None
     while(True):
         a.setUsername(input("Masukkan Username : "))
         a.setPassword(input("Masukkan Password : "))
         if a.getUsername() == "admin" and a.getPassword() == "admin":
-            a.setStatus="True"
+            a.setStatus("True")
             print("Berhasil Login")
             break
         elif max==0:
             print("Waktu login anda telah habis")
-            a.setStatus="False"
+            a.setStatus("False")
             break
         else:
             max-=1
             print("Username dan Password anda salah! Silahkan coba lagi")
-#masuk()
+masuk()

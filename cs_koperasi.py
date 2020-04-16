@@ -1,4 +1,4 @@
-from login import login
+from login import *
 
 class cs_koperasi:
     def __init__(self):
@@ -17,5 +17,13 @@ class cs_koperasi:
     def setNamaadmin(self, nama):
         self.__namaadmin = nama
 
+cs = cs_koperasi()
 l = login()
 
+while (True):
+    if l.getStatus != "True":
+       masuk()
+    else:
+        cs.setIdadmin(input("Masukkan ID : "))
+        print(cs.getIdadmin)
+        print(l.getStatus())
