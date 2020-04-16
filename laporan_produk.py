@@ -38,4 +38,4 @@ class Laporan_produk:
 
 lapprod = Laporan_produk()
 lapprod.setId_barang(input("masukkan id barang : "))
-print(lapprod.setId_barang())
+print(lapprod.getId_barang())
