@@ -24,4 +24,4 @@ class Transaksi_produk:
 
 transprod = Transaksi_produk
 transprod.setTanggalTransaksi(input("masukkan tanggal transaksi : "))
-print(transprod.setTanggalTransaksi())
+print(transprod.getTanggalTransaksi())
