@@ -2,22 +2,20 @@ from login import login
 
 class cs_koperasi:
     def __init__(self):
-        self.idadmin = ""
-        self.namaadmin = ""
+        self.__idadmin = ""
+        self.__namaadmin = ""
 
     def getIdadmin(self):
-        return "ID Admin : {}".format(self.idadmin)
+        return "ID Admin : {}".format(self.__idadmin)
 
     def setIdadmin(self, id):
-        self.idadmin = id
+        self.__idadmin = id
 
     def getNamaadmin(self):
-        return "Nama admin : {}".format(self.namaadmin)
+        return "Nama admin : {}".format(self.__namaadmin)
 
     def setNamaadmin(self, nama):
-        self.namaadmin = nama
+        self.__namaadmin = nama
 
-
-l=login()
-print(l.getStatus())
+l = login()
 

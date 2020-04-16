@@ -1,33 +1,33 @@
 class supplier:
     def __init__(self):
-        self.idsupplier = ""
-        self.nama_supplier = ""
-        self.no_telp = ""
-        self.alamat_supplier = ""
+        self.__idsupplier = ""
+        self.__nama_supplier = ""
+        self.__no_telp = ""
+        self.__alamat_supplier = ""
 
     def getIdsupplier(self):
-        return "Media : {}". format(self.idsupplier)
+        return "Media : {}". format(self.__idsupplier)
 
     def setIdsupplier(self, supplier):
-        self.idsupplier = supplier
+        self.__idsupplier = supplier
 
     def getNama_supplier(self):
-        return "Nama Supplier : {}". format(self.nama_supplier)
+        return "Nama Supplier : {}". format(self.__nama_supplier)
 
     def setNama_supplier(self, nama):
-        self.nama_supplier = nama
+        self.__nama_supplier = nama
 
     def getNo_telp(self):
-        return "Nomor HP : {}". format(self.no_telp)
+        return "Nomor HP : {}". format(self.__no_telp)
 
     def setNo_telp(self, hp):
-        self.no_telp = hp
+        self.__no_telp = hp
         
     def getAlamat_supplier(self):
-        return "Alamat : {}". format(self.alamat_supplier)
+        return "Alamat : {}". format(self.__alamat_supplier)
 
     def setAlamat_supplier(self, alamat):
-        self.alamat_supplier = alamat
+        self.__alamat_supplier = alamat
 
 a = supplier()
 a.setNo_telp(input("Masukkan HP :"))
