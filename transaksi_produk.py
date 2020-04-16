@@ -1,27 +1,27 @@
 class Transaksi_produk:
     def __init__(self):
-        self.idPembelian = ""
-        self.tanggalTransaksi = ""
-        self.totalPembayaran = ""
+        self.__id_pembelian = ""
+        self.__tanggal_transaksi = ""
+        self.__total_pembayaran = ""
 
-    def getIdPembelian(self):
-        return "ID Pembelian : {}".format(self.idPembelian)
+    def getId_pembelian(self):
+        return "ID Pembelian : {}".format(self.__id_pembelian)
 
-    def SetIdPembelian(self, id):
-        self.idPembelian = id
+    def setId_pembelian(self, id):
+        self.__id_pembelian = id
 
-    def getTanggalTransaksi(self):
-        return "Tanggal Transaksi : {}".format(self.tanggalTransaksi)
+    def getTanggal_transaksi(self):
+        return "Tanggal Transaksi : {}".format(self.__tanggal_transaksi)
 
-    def setTanggalTransaksi(self, tanggal):
-        self.tanggalTransaksi = tanggal
+    def setTanggal_transaksi(self, tanggal):
+        self.__tanggal_transaksi = tanggal
 
-    def getTotalPembayaran(self):
-        return "Total Pembayaran: {}".format(self.totalPembayaran)
+    def getTotal_pembayaran(self):
+        return "Total Pembayaran: {}".format(self.__total_pembayaran)
 
-    def setTotalPembayaran(self, total):
-        self.totalPembayaran = total
+    def setTotal_pembayaran(self, total):
+        self.__total_pembayaran = total
 
 transprod = Transaksi_produk()
-transprod.setTanggalTransaksi(input("masukkan tanggal transaksi : "))
-print(transprod.getTanggalTransaksi())
+transprod.setTanggal_transaksi (input("masukkan tanggal transaksi : "))
+print(transprod.getTanggal_transaksi())
