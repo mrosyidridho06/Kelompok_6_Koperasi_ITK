@@ -22,6 +22,6 @@ class Transaksi_produk:
     def setTotalPembayaran(self, total):
         self.totalPembayaran = total
 
-transprod = Transaksi_produk
+transprod = Transaksi_produk()
 transprod.setTanggalTransaksi(input("masukkan tanggal transaksi : "))
 print(transprod.getTanggalTransaksi())
