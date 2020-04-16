@@ -1,8 +1,8 @@
 class pembeli:
-    def __init__(self):
-        self.__idpembeli = ""
-        self.__namapembeli = ""
-        self.__harga_barang = ""
+    def __init__(self,idpembeli,namapembeli,hargabarang):
+        self.__idpembeli = idpembeli
+        self.__namapembeli = namapembeli
+        self.__harga_barang = hargabarang
 
     def getIdpembeli(self):
         return "ID Pembeli : {}".format(self.__idpembeli)
@@ -25,4 +25,8 @@ class pembeli:
     def __add__(self,objek):
         return "Jumlah Total : {}".format(self.__harga_barang + objek.__harga_barang)
 
-p = pembeli()
+beli1 = pembeli(1,"Erza",1100)
+beli2 = pembeli(2,"Fahmi",2300)
+print(beli1)
+print(beli2)
+print(beli1+beli2)
