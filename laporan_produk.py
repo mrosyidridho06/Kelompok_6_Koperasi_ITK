@@ -1,40 +1,40 @@
 class Laporan_produk:
     def __init__(self):
-        self.id_barang = ""
-        self.harga_produk = ""
-        self.tanggal = ""
-        self.jumlah_produk = ""
-        self.nama_produk = ""
+        self.__id_barang = ""
+        self.__harga_produk = ""
+        self.__tanggal = ""
+        self.__jumlah_produk = ""
+        self.__nama_produk = ""
 
     def getId_barang(self):
-        return "ID Barang : {}".format(self.id_barang)
+        return "ID Barang : {}".format(self.__id_barang)
 
     def setId_barang(self, id):
-        self.id_barang = id
+        self.__id_barang = id
 
     def getHarga_produk(self):
-        return "Harga Produk : {}".format(self.harga_produk)
+        return "Harga Produk : {}".format(self.__harga_produk)
 
     def setHarga_produk(self, harga):
-        self.harga_produk = harga
+        self.__harga_produk = harga
 
     def getTanggal(self):
-        return "Tanggal : {}".format(self.tanggal)
+        return "Tanggal : {}".format(self.__tanggal)
 
     def setTanggal(self, tanggal):
-        self.tanggal = tanggal
+        self.__tanggal = tanggal
 
     def getJumlah_produk(self):
-        return "Jumlah Produk : {}".format(self.jumlah_produk)
+        return "Jumlah Produk : {}".format(self.__jumlah_produk)
 
     def setJumlah_produk(self, jumlah):
-        self.jumlah_produk = jumlah
+        self.__jumlah_produk = jumlah
 
     def getNama_produk(self):
-        return "Nama Produk: {}".format(self.nama_produk)
+        return "Nama Produk: {}".format(self.__nama_produk)
 
     def setNama_produk(self, nama):
-        self.nama_produk = nama
+        self.__nama_produk = nama
 
 lapprod = Laporan_produk()
 lapprod.setId_barang(input("masukkan id barang : "))
