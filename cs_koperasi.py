@@ -1,3 +1,5 @@
+from login import login
+
 class cs_koperasi:
     def __init__(self):
         self.idadmin = ""
@@ -14,3 +16,8 @@ class cs_koperasi:
 
     def setNamaadmin(self, nama):
         self.namaadmin = nama
+
+
+l=login()
+print(l.getStatus())
+

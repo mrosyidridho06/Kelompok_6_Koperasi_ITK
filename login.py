@@ -2,6 +2,7 @@ class login:
     def __init__(self):
         self.username = ""
         self.password = ""
+        self.status = ""
 
     def getUsername(self):
         return self.username
@@ -14,6 +15,9 @@ class login:
 
     def setPassword(self, pas):
         self.password = pas
+    
+    def getStatus(self,status):
+        return self.status
 
 a = login()
 
@@ -23,12 +27,12 @@ def masuk():
         a.setUsername(input("Masukkan Username : "))
         a.setPassword(input("Masukkan Password : "))
         if a.getUsername() == "admin" and a.getPassword() == "admin":
-            status=True
+            a.status=True
             print("Berhasil Login")
             break
         elif max==0:
             print("Waktu login anda telah habis")
-            status=False
+            a.status=False
             break
         else:
             max-=1
