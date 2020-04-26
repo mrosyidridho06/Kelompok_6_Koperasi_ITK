@@ -21,7 +21,7 @@ cs = cs_koperasi()
 l = login()
 
 while (True):
-    if l.getStatus != "True":
+    if l.getStatus() != "True":
        masuk()
     else:
         cs.setIdadmin(input("Masukkan ID : "))
