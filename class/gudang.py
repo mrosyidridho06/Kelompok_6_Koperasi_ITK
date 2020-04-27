@@ -1,20 +1,24 @@
 class gudang:
-    def __init__(self):
-        self.__jumlah_produk = ""
-        self.__lokasi = ""
+    def __init__(self, jumlah_produk, lokasi):
+        self.__jumlah_produk = jumlah_produk
+        self.__lokasi = lokasi
 
+    @property
     def getJumlah_produk(self):
-        return "Jumlah Produk : {}".format(self.__jumlah_produk)
+        return self.__jumlah_produk
 
-    def setJumlah_produk(self,jumlah):
+    @jumlah_produk.setter
+    def jumlah_produk(self,jumlah):
         self.__jumlah_produk = jumlah
 
+    @property
     def getLokasi(self):
-        return "Lokasi : {}".format(self.__lokasi)
+        return self.__lokasi
     
-    def setLokasi(self,tempat):
+    @lokasi.setter
+    def lokasi(self,tempat):
         self.__lokasi = tempat
 
-g = gudang()
-g.setLokasi(input("Masukkan Lokasi : "))
-print(g.getLokasi())
+g = gudang("10","Gresik")
+
+print(g)

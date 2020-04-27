@@ -1,18 +1,22 @@
 class Laporan_simpanpinjam:
-    def __init__(self):
-        self.__id_nasabah = ""
-        self.__tanggal_laporan = ""
+    def __init__(self, id_nasabah, tanggal_laporan):
+        self.__id_nasabah = id_nasabah
+        self.__tanggal_laporan = tanggal_laporan
 
+    @property
     def getId_nasabah(self):
-        return "Id Nasabah : {}".format(self.__id_nasabah)
+        return self.__id_nasabah
 
+    @Id_nasabah.setter
     def setId_nasabah(self, nasabah):
         self.__id_nasabah = nasabah
 
+    @property
     def getTanggal(self):
-        return  "Tanggal nasabah : {}".format(self.__tanggal_laporan)
+        return  self.__tanggal_laporan
 
-    def setTanggal(self, tanggal):
+    @Tanggal.setter
+    def Tanggal(self, tanggal):
         self.__tanggal_laporan = tanggal
 
 lapornas = Laporan_simpanpinjam()

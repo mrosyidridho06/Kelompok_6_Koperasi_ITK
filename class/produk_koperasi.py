@@ -1,20 +1,23 @@
 class Produk_koperasi:
-    def __init__(self):
-        self.__hargaproduk = ""
-        self.__tanggalproduk = ""
+    def __init__(self, harga_produk, tanggal_produk):
+        self.__harga_produk = harga_produk
+        self.__tanggalproduk = tanggal_produk
 
+    @property
     def getHarga(self):
-        return "Harga : {}".format(self.__hargaproduk)
+        return self.__harga_produk
 
-    def setHarga(self, harga):
-        self.__hargaproduk = harga
+    @Harga.setter
+    def Harga(self, harga):
+        self.__harga_produk = harga
 
+    @property
     def getTanggalmasukproduk(self):
-        return "Tanggal Produk : {}".format(self.__tanggalproduk)
+        return self.__tanggal_produk
 
-    def setTanggalmasukproduk(self, tanggal_masukproduk):
-        self.__tanggalproduk = tanggal_masukproduk
+    @Tanggalmasukproduk.setter
+    def Tanggalmasukproduk(self, tanggal_masuk_produk):
+        self.__tanggal_produk = tanggal_masuk_produk
 
-product = Produk_koperasi()
-product.setHarga(input("Masukkan Harga Produk : "))
-print(product.getHarga())
+product = Produk_koperasi("10000","21")
+print(product)

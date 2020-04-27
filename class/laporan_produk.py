@@ -1,39 +1,48 @@
 class Laporan_produk:
-    def __init__(self):
-        self.__id_barang = ""
-        self.__harga_produk = ""
-        self.__tanggal = ""
-        self.__jumlah_produk = ""
-        self.__nama_produk = ""
+    def __init__(self, id_barang,harga_produk,tanggal,jumlah_produk,nama_produk):
+        self.__id_barang = id_barang
+        self.__harga_produk = harga_produk
+        self.__tanggal = tanggal
+        self.__jumlah_produk = jumlah_produk
+        self.__nama_produk = nama_produk
 
+    @property
     def getId_barang(self):
-        return "ID Barang : {}".format(self.__id_barang)
+        return self.__id_barang
 
-    def setId_barang(self, id):
+    @Id_barang.setter
+    def Id_barang(self, id):
         self.__id_barang = id
 
+    @property
     def getHarga_produk(self):
-        return "Harga Produk : {}".format(self.__harga_produk)
+        return self.__harga_produk
 
-    def setHarga_produk(self, harga):
+    @Harga_produk.setter
+    def Harga_produk(self, harga):
         self.__harga_produk = harga
 
+    @property
     def getTanggal(self):
-        return "Tanggal : {}".format(self.__tanggal)
+        return self.__tanggal
 
-    def setTanggal(self, tanggal):
+    @Tanggal.setter
+    def Tanggal(self, tanggal):
         self.__tanggal = tanggal
 
     def getJumlah_produk(self):
-        return "Jumlah Produk : {}".format(self.__jumlah_produk)
+        return self.__jumlah_produk
 
-    def setJumlah_produk(self, jumlah):
+    @Jumlah_produk.setter
+    def Jumlah_produk(self, jumlah):
         self.__jumlah_produk = jumlah
 
+    @property
     def getNama_produk(self):
-        return "Nama Produk: {}".format(self.__nama_produk)
+        return self.__nama_produk
 
-    def setNama_produk(self, nama):
+    @Nama_produk.setter
+    def Nama_produk(self, nama):
         self.__nama_produk = nama
 
 lapprod = Laporan_produk()

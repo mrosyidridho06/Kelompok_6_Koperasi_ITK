@@ -1,41 +1,50 @@
 class Produk:
-    def __init__(self):
-        self.__id_barang = ""
-        self.__nama_produk = ""
-        self.__jumlah_produk = ""
-        self.__harga_produk = ""
-        self.__tanggal_masuk = ""
+    def __init__(self, id_barang, nama_produk, jumlah_produk, harga_produk, tanggal_masuk):
+        self.__id_barang = id_barang
+        self.__nama_produk = nama_produk
+        self.__jumlah_produk = jumlah_produk
+        self.__harga_produk = harga_produk
+        self.__tanggal_masuk = tanggal_masuk
 
+    @property
     def getId_barang(self):
-        return "ID Barang : {}".format(self.__id_barang)
+        return self.__id_barang
 
-    def SetId_barang(self, id):
+    @Id_barang.setter
+    def Id_barang(self, id):
         self.__id_barang = id
 
+    @property
     def getNama_produk(self):
-        return "Nama Produk: {}".format(self.__nama_produk)
+        return self.__nama_produk
 
-    def setNama_produk(self, nama):
+    @Nama_produk.setter
+    def Nama_produk(self, nama):
         self.__nama_produk = nama
 
+    @property
     def getJumlah_produk(self):
-        return "Jumlah Produk : {}".format(self.__jumlah_produk)
+        return self.__jumlah_produk
 
-    def setJumlah_produk(self, jumlah):
+    @Jumlah_produk.setter
+    def Jumlah_produk(self, jumlah):
         self.__jumlah_produk = jumlah
 
+    @property
     def getHarga_produk(self):
-        return "Harga Produk : {}".format(self.__harga_produk)
+        return self.__harga_produk
 
-    def setHarga_produk(self, harga):
+    @Harga_produk.setter
+    def Harga_produk(self, harga):
         self.__harga_produk = harga
 
+    @property
     def getTanggal_masuk(self):
-        return "Tanggal Masuk : {}".format(self.__tanggal_masuk)
+        return self.__tanggal_masuk
 
-    def setTanggal(self, tanggal):
+    @Tanggal.setter
+    def Tanggal(self, tanggal):
         self.__tanggal = tanggal
 
-prod = Produk()
-prod.setNama_produk(input("masukkan nama produk : "))
-print(prod.getNama_produk())
+prod = Produk(1,"susu",3,5000,21)
+print(prod)
