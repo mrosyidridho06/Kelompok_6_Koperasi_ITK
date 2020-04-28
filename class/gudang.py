@@ -20,6 +20,6 @@ class gudang:
         self.__lokasi = tempat
 
 g = gudang(10,"Gresik")
-print(g.jumlah_produk)
+print('Jumlah Produk:', g.jumlah_produk, '\nlokasi:', g.lokasi)
 g.jumlah_produk = 11
 print(g.jumlah_produk)
