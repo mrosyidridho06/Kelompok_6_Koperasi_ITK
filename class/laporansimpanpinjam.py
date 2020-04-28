@@ -4,21 +4,22 @@ class Laporan_simpanpinjam:
         self.__tanggal_laporan = tanggal_laporan
 
     @property
-    def getId_nasabah(self):
+    def id_nasabah(self):
         return self.__id_nasabah
 
-    @Id_nasabah.setter
-    def setId_nasabah(self, nasabah):
+    @id_nasabah.setter
+    def id_nasabah(self, nasabah):
         self.__id_nasabah = nasabah
 
     @property
-    def getTanggal(self):
+    def tanggal_laporan(self):
         return  self.__tanggal_laporan
 
-    @Tanggal.setter
-    def Tanggal(self, tanggal):
+    @tanggal_laporan.setter
+    def tanggal_laporan(self, tanggal):
         self.__tanggal_laporan = tanggal
 
-lapornas = Laporan_simpanpinjam()
-lapornas.setId_nasabah(input("masukkan id : "))
-print(lapornas.getId_nasabah())
+a = Laporan_simpanpinjam(1,21)
+print(a.id_nasabah)
+a.id_nasabah = 10
+print(a.id_nasabah)

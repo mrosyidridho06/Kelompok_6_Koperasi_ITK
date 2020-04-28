@@ -4,7 +4,7 @@ class gudang:
         self.__lokasi = lokasi
 
     @property
-    def getJumlah_produk(self):
+    def jumlah_produk(self):
         return self.__jumlah_produk
 
     @jumlah_produk.setter
@@ -12,13 +12,14 @@ class gudang:
         self.__jumlah_produk = jumlah
 
     @property
-    def getLokasi(self):
+    def lokasi(self):
         return self.__lokasi
     
     @lokasi.setter
     def lokasi(self,tempat):
         self.__lokasi = tempat
 
-g = gudang("10","Gresik")
-
-print(g)
+g = gudang(10,"Gresik")
+print(g.jumlah_produk)
+g.jumlah_produk = 11
+print(g.jumlah_produk)

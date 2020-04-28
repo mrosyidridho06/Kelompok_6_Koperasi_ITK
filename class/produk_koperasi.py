@@ -4,20 +4,22 @@ class Produk_koperasi:
         self.__tanggalproduk = tanggal_produk
 
     @property
-    def getHarga(self):
+    def harga_produk(self):
         return self.__harga_produk
 
-    @Harga.setter
-    def Harga(self, harga):
+    @harga_produk.setter
+    def harga_produk(self, harga):
         self.__harga_produk = harga
 
     @property
-    def getTanggalmasukproduk(self):
+    def tanggal_produk(self):
         return self.__tanggal_produk
 
-    @Tanggalmasukproduk.setter
-    def Tanggalmasukproduk(self, tanggal_masuk_produk):
-        self.__tanggal_produk = tanggal_masuk_produk
+    @tanggal_produk.setter
+    def tanggal_produk(self, tanggal_produk):
+        self.__tanggal_produk = tanggal_produk
 
-product = Produk_koperasi("10000","21")
-print(product)
+a = Produk_koperasi(10000,21)
+print(a.harga_produk)
+a.harga_produk = 5000
+print(a.harga_produk)

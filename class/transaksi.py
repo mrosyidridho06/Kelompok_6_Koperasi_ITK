@@ -4,21 +4,23 @@ class Transaksi:
         self.__tgl_transaksi = tgl_transaksi
 
     @property
-    def getId_nasabah(self):
+    def id_nasabah(self):
         return self.__id_nasabah
 
-    @Id_nasabah.setter
-    def Id_nasabah(self, id):
+    @id_nasabah.setter
+    def id_nasabah(self, id):
         self.__id_nasabah = id
 
     @property
-    def getTgl_transaksi(self):
+    def tgl_transaksi(self):
         return self.__tgl_transaksi
 
-    @Tgl_transaksi.setter
-    def Tgl_transaksi(self, tgl):
+    @tgl_transaksi.setter
+    def tgl_transaksi(self, tgl):
         self.__tgl_transaksi = tgl
 
 
-sp = Transaksi(1,21)
-print(Transaksi)
+a = Transaksi(1,21)
+print(a.id_nasabah)
+a.id_nasabah=10
+print(a.id_nasabah)

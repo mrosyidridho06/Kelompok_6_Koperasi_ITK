@@ -6,36 +6,38 @@ class supplier:
         self.__alamat_supplier = alamat_supplier
 
     @property
-    def getIdsupplier(self):
+    def id_supplier(self):
         return self.__id_supplier
 
-    @Idsupplier.setter
-    def Idsupplier(self, supplier):
+    @id_supplier.setter
+    def id_supplier(self, supplier):
         self.__id_supplier = supplier
 
     @property
-    def getNama_supplier(self):
+    def nama_supplier(self):
         return self.__nama_supplier
 
-    @Nama_supplier.setter
-    def Nama_supplier(self, nama):
+    @nama_supplier.setter
+    def nama_supplier(self, nama):
         self.__nama_supplier = nama
 
     @property
-    def getNo_telp(self):
+    def no_telp(self):
         return self.__no_telp
 
-    @No_telp.setter
-    def No_telp(self, hp):
+    @no_telp.setter
+    def no_telp(self, hp):
         self.__no_telp = hp
 
     @property    
-    def getAlamat_supplier(self):
+    def alamat_supplier(self):
         return self.__alamat_supplier
 
-    @Alamat_supplier.setter
-    def Alamat_supplier(self, alamat):
+    @alamat_supplier.setter
+    def alamat_supplier(self, alamat):
         self.__alamat_supplier = alamat
 
 a = supplier(1,"erza",41312,"Ruby")
-print(supplier)
+print(a.nama_supplier)
+a.nama_supplier = "fasya"
+print(a.nama_supplier)

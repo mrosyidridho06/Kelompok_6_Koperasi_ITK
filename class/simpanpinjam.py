@@ -1,41 +1,43 @@
 class Simpanpinjam:
-    def __init__(self, Id_nasabah, tanggal, jumlah_simpan, jumlah_pinjam):
-        self.__id_nasabah = Id_nasabah
+    def __init__(self, id_nasabah, tanggal, jumlah_simpan, jumlah_pinjam):
+        self.__id_nasabah = id_nasabah
         self.__tanggal = tanggal
         self.__jumlah_simpan = jumlah_simpan
         self.__jumlah_pinjam = jumlah_pinjam
 
     @property
-    def getId_nasabah(self):
+    def id_nasabah(self):
         return self.__id_nasabah
 
-    @Id_nasabah.setter
+    @id_nasabah.setter
     def Id_nasabah(self, id):
         self.__id_nasabah = id
 
     @property
-    def getTanggal(self):
+    def tanggal(self):
         return self.__tanggal
 
-    @Tanggal.setter
-    def Tanggal(self, tanggal):
+    @tanggal.setter
+    def tanggal(self, tanggal):
         self.__tanggal = tanggal
 
     @property
-    def getJumlah_simpan(self):
+    def jumlah_simpan(self):
         return self.__jumlah_simpan
     
-    @Jumlah_simpan.setter
-    def Jumlah_simpan(self, jumlah_simpan):
+    @jumlah_simpan.setter
+    def jumlah_simpan(self, jumlah_simpan):
         self.__jumlah_simpan = jumlah_simpan
 
     @property
-    def getJumlah_pinjam(self):
+    def jumlah_pinjam(self):
         return self.__jumlah_pinjam
 
-    @Jumlah_pinjam.setter
-    def Jumlah_pinjam(self, jumlah_pinjam):
+    @jumlah_pinjam.setter
+    def jumlah_pinjam(self, jumlah_pinjam):
         self.__jumlah_pinjam = jumlah_pinjam
 
-sp = Simpanpinjam(1,21,3,3000)
-print(Simpanpinjam)
+a = Simpanpinjam(1,21,3,3000)
+print(a.jumlah_pinjam)
+a.jumlah_pinjam = 10000
+print(a.jumlah_pinjam)

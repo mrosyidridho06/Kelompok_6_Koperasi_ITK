@@ -7,44 +7,46 @@ class Laporan_produk:
         self.__nama_produk = nama_produk
 
     @property
-    def getId_barang(self):
+    def id_barang(self):
         return self.__id_barang
 
-    @Id_barang.setter
-    def Id_barang(self, id):
+    @id_barang.setter
+    def id_barang(self, id):
         self.__id_barang = id
 
     @property
-    def getHarga_produk(self):
+    def harga_produk(self):
         return self.__harga_produk
 
-    @Harga_produk.setter
-    def Harga_produk(self, harga):
+    @harga_produk.setter
+    def harga_produk(self, harga):
         self.__harga_produk = harga
 
     @property
-    def getTanggal(self):
+    def tanggal(self):
         return self.__tanggal
 
-    @Tanggal.setter
-    def Tanggal(self, tanggal):
+    @tanggal.setter
+    def tanggal(self, tanggal):
         self.__tanggal = tanggal
 
-    def getJumlah_produk(self):
+    @property
+    def jumlah_produk(self):
         return self.__jumlah_produk
 
-    @Jumlah_produk.setter
-    def Jumlah_produk(self, jumlah):
+    @jumlah_produk.setter
+    def jumlah_produk(self, jumlah):
         self.__jumlah_produk = jumlah
 
     @property
-    def getNama_produk(self):
+    def nama_produk(self):
         return self.__nama_produk
 
-    @Nama_produk.setter
-    def Nama_produk(self, nama):
+    @nama_produk.setter
+    def nama_produk(self, nama):
         self.__nama_produk = nama
 
-lapprod = Laporan_produk()
-lapprod.setId_barang(input("masukkan id barang : "))
-print(lapprod.getId_barang())
+a = Laporan_produk(1,2000,21,3,"Baju")
+print(a.id_barang)
+a.id_barang = 10
+print(a.id_barang)

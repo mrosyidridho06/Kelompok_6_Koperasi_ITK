@@ -1,29 +1,34 @@
-from login import *
+#from login import *
 
 class cs_koperasi:
-    def __init__(self):
-        self.__idadmin = ""
-        self.__namaadmin = ""
+    def __init__(self,id_admin,nama_admin):
+        self.__id_admin = id_admin
+        self.__nama_admin = nama_admin
 
-    def getIdadmin(self):
-        return "ID Admin : {}".format(self.__idadmin)
+    @property
+    def id_admin(self):
+        return self.__id_admin
 
-    def setIdadmin(self, id):
-        self.__idadmin = id
+    @id_admin.setter
+    def id_admin(self, id_admin):
+        self.__id_admin = id_admin
 
-    def getNamaadmin(self):
-        return "Nama admin : {}".format(self.__namaadmin)
+    @property
+    def nama_admin(self):
+        return self.__nama_admin
 
-    def setNamaadmin(self, nama):
-        self.__namaadmin = nama
+    @nama_admin.setter
+    def nama_admin(self, nama_admin):
+        self.__nama_admin = nama_admin
 
-cs = cs_koperasi()
-l = login()
+cs = cs_koperasi("admin","erza")
+print(cs.nama_admin)
+#l = login()
 
-while (True):
-    if l.getStatus() != "True":
-       masuk()
-    else:
-        cs.setIdadmin(input("Masukkan ID : "))
-        print(cs.getIdadmin)
-        print(l.getStatus())
+#while (True):
+   # if l.getStatus() != "True":
+    #   masuk()
+   # else:
+     #   cs.setIdadmin(input("Masukkan ID : "))
+      #  print(cs.getIdadmin)
+      #  print(l.getStatus())
