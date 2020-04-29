@@ -19,6 +19,5 @@ class SimpanPinjamORM(base):
         self.__tanggal = tanggal
         self.__jumlah_simpan = jumlah_simpan
         self.__jumlah_pinjam = jumlah_pinjam
-
         
 #sessionFactory()
