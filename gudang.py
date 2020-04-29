@@ -2,36 +2,27 @@ from base import sessionFactory
 from GudangORM import GudangORM
 
 class Gudang:
-    def __init__(self, id_barang, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
-        self.__id_barang = id_barang
+    def __init__(self, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
         self.__jumlah_barang = jumlah_barang
         self.__lokasi = lokasi
         self.__tanggal_masuk = tanggal_masuk
         self.__harga_barang = harga_barang
 
     @property
-    def id_barang(self):
-        return self.__id_barang
-
-    @id_barang.setter
-    def id_barang(self, id_barang):
-        self.__id_barang = id_barang
-
-    @property
     def jumlah_barang(self):
         return self.__jumlah_barang
 
     @jumlah_barang.setter
-    def jumlah_barang(self,jumlah):
-        self.__jumlah_barang = jumlah
+    def jumlah_barang(self,jumlah_barang):
+        self.__jumlah_barang = jumlah_barang
 
     @property
     def lokasi(self):
         return self.__lokasi
     
     @lokasi.setter
-    def lokasi(self,tempat):
-        self.__lokasi = tempat
+    def lokasi(self,lokasi):
+        self.__lokasi = lokasi
 
     @property
     def tanggal_masuk(self):
@@ -54,7 +45,7 @@ class Gudang:
     def insertGudang(self):
             try:
                 session = sessionFactory()
-                gudang = GudangORM(self.__id_barang, self.__jumlah_barang, self.__lokasi, self.__tanggal_masuk, self.harga_barang)
+                gudang = GudangORM(self.__jumlah_barang, self.__lokasi, self.__tanggal_masuk, self.__harga_barang)
                 session.add(gudang)
                 session.commit()
                 session.close()
@@ -107,9 +98,9 @@ class Gudang:
             print("Data telah Terupdate!")
 
 
-a = Gudang(1, 12, "samarinda", "20 april", 10000)
+a = Gudang("12", "samarinda", "20 april", "10000")
 print(a)
 a.insertGudang()
-#gudang.deleteNasabah(2)
-#gudang.updateNasabah(2)
+#Gudang.deleteGudang(10)
+#gudang.updateGudang(2)
 Gudang.dataGudang()
