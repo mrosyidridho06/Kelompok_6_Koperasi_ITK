@@ -16,4 +16,5 @@ class NasabahORM(Base):
         self.nama_nasabah = nama
         self.alamat = alamat
         self.no_telp = noTelp
-      
+
+#sessionFactory()

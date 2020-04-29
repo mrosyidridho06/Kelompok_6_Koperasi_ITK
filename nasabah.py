@@ -1,12 +1,11 @@
-from database.base import sessionFactory
-from database.NasabahORM import NasabahORM
+from base import sessionFactory
+from NasabahORM import NasabahORM
 
 class Nasabah:
     def __init__(self, nama_nasabah, alamat, no_telp):
         self.__nama_nasabah = nama_nasabah
         self.__alamat = alamat
         self.__no_telp = no_telp
-
   
     @property
     def nama_nasabah(self):
@@ -17,7 +16,7 @@ class Nasabah:
          self.__nama_nasabah = nama
 
     @property
-    def getAlamat(self):
+    def alamat(self):
         return self.__alamat
 
     @alamat.setter
@@ -25,7 +24,7 @@ class Nasabah:
         self.__alamat = alamat
 
     @property
-    def getNo_telp(self):
+    def no_telp(self):
         return self.__no_telp
 
     @no_telp.setter
@@ -43,7 +42,7 @@ class Nasabah:
             except Exception as e:
                 print("===>", e)
             else:
-                print("Data Berhasil Disimpan!")
+                print("Data telah Disimpan!")
 
     @staticmethod
     def DataNasabah():
@@ -56,8 +55,40 @@ class Nasabah:
             session.close()
         except Exception as e:
             print("===>", e)
+    
+    @staticmethod
+    def deleteNasabah(id_nasabah):
+        try:
+            session = sessionFactory()
+            session.query(NasabahORM).filter_by(id_nasabah=id_nasabah).delete()
+            session.commit()
+            session.close()
+        except Exception as e:
+            print("===>", e)
+        else:
+            print("Data terlah terhapus!")
 
-d = Nasabah("Erza", "Ruby", "HP",)
-print(d)
-d.insertNasabah()
+    @staticmethod
+    def updateNasabah(id_nasabah):
+        try:
+            newNama = input("Nama Nasabah : ")
+            newAlamat = input("Alamat Nasabah : ")
+            newNotelp = input("No Telp Nasabah: ")
+            session = sessionFactory()
+            session.query(NasabahORM).filter_by(id_nasabah=id_nasabah).update({
+                NasabahORM.nama_nasabah: newNama, NasabahORM.alamat: newAlamat,
+                NasabahORM.no_telp: newNotelp                
+            }, synchronize_session=False)
+            session.commit()
+            session.close()
+        except Exception as e:
+            print("===>", e)
+        else:
+            print("Data telah Terupdate!")
+
+a = Nasabah("Erza", "Rubya", "081")
+#print(a)
+a.insertNasabah()
+#Nasabah.deleteNasabah(2)
+#Nasabah.updateNasabah(2)
 Nasabah.DataNasabah()
