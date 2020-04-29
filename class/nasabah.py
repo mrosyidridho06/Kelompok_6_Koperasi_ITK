@@ -1,5 +1,5 @@
-from ..database.base import sessionFactory
-from ..database.NasabahORM import NasabahORM
+from database.base import sessionFactory
+from database.NasabahORM import NasabahORM
 
 class Nasabah:
     def __init__(self, nama_nasabah, alamat, no_telp):

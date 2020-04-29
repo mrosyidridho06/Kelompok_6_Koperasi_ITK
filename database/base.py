@@ -10,3 +10,4 @@ _SessionFactory = sessionmaker(bind=engine)
 def sessionFactory():
     Base.metadata.create_all(engine)
     return _SessionFactory()
+
