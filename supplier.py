@@ -48,7 +48,7 @@ class supplier:
     def DataSupplier():
         try:
             session = sessionFactory()
-            for Supplier in session.query(SupplierORM).all():
+            for supplier in session.query(SupplierORM).all():
                 print(
                     "Id supplier = {}\nNama = {}\nNo Telp = {}\nAlamat = {}\n===================="
                         .format(supplier.id_supplier, supplier.nama_supplier, supplier.no_telp, supplier.alamat_supplier))
