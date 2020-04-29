@@ -9,7 +9,7 @@ class Nasabah:
 
   
     @property
-    def getNama_nasabah(self):
+    def nama_nasabah(self):
         return self.__nama_nasabah
 
     @nama_nasabah.setter
