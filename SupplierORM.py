@@ -1,7 +1,7 @@
-from sqlalchemy import column, string, integer, text
+from sqlalchemy import Column, String, Integer, Text
 from base import Base, sessionFactory
 
-class SupplierORM(base):
+class SupplierORM(Base):
     __tablename__ = 'Supplier'
 
     id_supplier= Column(Integer, primary_key=True)
@@ -10,8 +10,8 @@ class SupplierORM(base):
     alamat_supplier = Column(String)
 
     def __init__(self, nama_supplier, no_telp, alamat_supplier):
-        self.nama_supplier = nama
-        self.no_telp = no.telp
-        self.alamat_supplier = alamat
+        self.nama_supplier = nama_supplier
+        self.no_telp = no_telp
+        self.alamat_supplier = alamat_supplier
 
 #sessionFactory()

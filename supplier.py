@@ -1,7 +1,7 @@
 from base import sessionFactory
 from SupplierORM import SupplierORM
 
-class supplier:
+class Supplier:
     def __init__(self, nama_supplier, no_telp, alamat_supplier):
         self.__nama_supplier = nama_supplier
         self.__no_telp = no_telp
@@ -91,4 +91,4 @@ s = Supplier("Joni", "0881238472", "jl.Ruqyah")
 s.insertSupplier()
 #Supplier.deleteSupplier(2)
 #Supplier.updateSupplier(2)
-supplier.DataSupplier()
+Supplier.DataSupplier()
