@@ -1,8 +1,12 @@
-from sqlalchemy import Column, String, Integer, Date
-from class.simpanpinjam import simpanpinjam
-from database import base
+# from sqlalchemy import Column, String, Integer, Date
+# from class.simpanpinjam import simpanpinjam
+# from database import base
 
-class SimpanpinjamORM(base):
+from sqlalchemy import Column, String, Integer, Text
+from base import Base, sessionFactory
+#from Class.HakAkses import HakAkses
+
+class SimpanPinjamORM(base):
     __tablename__='SimpanPinjam'
 
     id_nasabah = Column(Integer, primary_key=True)
@@ -15,3 +19,6 @@ class SimpanpinjamORM(base):
         self.__tanggal = tanggal
         self.__jumlah_simpan = jumlah_simpan
         self.__jumlah_pinjam = jumlah_pinjam
+
+        
+#sessionFactory()
