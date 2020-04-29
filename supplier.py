@@ -2,19 +2,10 @@ from base import sessionFactory
 from SupplierORM import SupplierORM
 
 class supplier:
-    def __init__(self, id_supplier, nama_supplier, no_telp, alamat_supplier):
-        self.__id_supplier = id_supplier
+    def __init__(self, nama_supplier, no_telp, alamat_supplier):
         self.__nama_supplier = nama_supplier
         self.__no_telp = no_telp
         self.__alamat_supplier = alamat_supplier
-
-    @property
-    def id_supplier(self):
-        return self.__id_supplier
-
-    @id_supplier.setter
-    def id_supplier(self, supplier):
-        self.__id_supplier = supplier
 
     @property
     def nama_supplier(self):
