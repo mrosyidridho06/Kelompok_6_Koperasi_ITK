@@ -53,7 +53,7 @@ class SupplierORM(Base):
             print("Data terlah terhapus!")
 
     @staticmethod
-    def updateSupplier(id_Supplier):
+    def updateSupplier(id_supplier):
         try:
             newNama = input("Nama Supplier : ")
             newNotelp = input("No Telp Supplier: ")
