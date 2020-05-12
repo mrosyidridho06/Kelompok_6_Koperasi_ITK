@@ -1,10 +1,5 @@
-# from sqlalchemy import Column, String, Integer, Date
-# from Class.simpanpinjam import simpanpinjam
-# from database import base
-
 from sqlalchemy import Column, String, Integer, Text
-from base import Base, sessionFactory
-#from Class.HakAkses import HakAkses
+from database.base import Base, sessionFactory
 
 class SimpanPinjamORM(base):
     __tablename__='SimpanPinjam'

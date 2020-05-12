@@ -12,8 +12,8 @@ class Simpanpinjam:
     @id_nasabah.setter
     def id_nasabah(self, id):
         self.__id_nasabah = id
-        
-   @property
+
+    @property
     def tanggal(self):
         return self.__tanggal
 

@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Text
-from base import Base, sessionFactory
+from database.base import Base, sessionFactory
 #from Class.HakAkses import HakAkses
 
 
