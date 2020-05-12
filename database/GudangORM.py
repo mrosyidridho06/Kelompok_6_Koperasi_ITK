@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from base import Base, sessionFactory
+from database.base import Base, sessionFactory
 
 class GudangORM(Base):
     __tablename__='gudang'

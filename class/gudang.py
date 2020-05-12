@@ -1,5 +1,5 @@
-from base import sessionFactory
-from GudangORM import GudangORM
+from database.GudangORM import sessionFactory
+from database.GudangORM import GudangORM
 
 class Gudang:
     def __init__(self, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
