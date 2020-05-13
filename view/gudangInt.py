@@ -10,7 +10,7 @@ class InputGudang(QWidget):
     def  __init__(self):
         super(InputGudang,self).__init__()
         self.setWindowTitle("Input Gudang")
-        self.setGeometry(200,200,700,500)
+        self.setGeometry(200,200,400,250)
         self.Tampilan()
 
 
