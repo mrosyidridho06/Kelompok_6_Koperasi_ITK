@@ -11,9 +11,6 @@ class Tab(QDialog):
         self.setWindowTitle("Input Gudang")
         self.setGeometry(200,200,500,300)
 
-
-
-
         self.setWindowTitle('Tab Widget')
 
         vbox = QVBoxLayout()
