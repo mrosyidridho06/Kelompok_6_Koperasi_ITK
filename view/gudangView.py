@@ -1,7 +1,7 @@
 from Class.gudang import Gudang
 from database.base import sessionFactory
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import (QApplication,QAbstractItemView,QMessageBox,QMainWindow, QWidget,QHBoxLayout, QPushButton,QTableWidget,QTableWidgetItem,QVBoxLayout)
+from PyQt5.QtWidgets import (QApplication, QAbstractItemView,QMessageBox,QMainWindow, QWidget,QHBoxLayout, QPushButton,QTableWidget,QTableWidgetItem,QVBoxLayout)
 import sys
 from database.GudangORM import GudangORM
 
@@ -11,18 +11,19 @@ class LaporanGudang(QMainWindow):
         self.Tampilan()
 
 
+
     def Tampilan(self):
         self.setWindowTitle("Laporan Gudang")
-        self.setGeometry(200, 200, 900, 500)
-
+        #self.setGeometry(200, 200, 900, 500)
         self.create_table()
+        
 
 
     def create_table(self):
         self.table = QTableWidget(self)
         self.table.cellClicked.connect(self.cek)
         self.table.setColumnCount(3)
-        self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah"])
+        self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah","Lokasi","Tanggal","Harga"])
         self.table.setFixedSize(741,350)
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.isiTable()
@@ -31,16 +32,21 @@ class LaporanGudang(QMainWindow):
         print(self.table.item(row, 0).text())
         print(self.table.item(row, 1).text())
         print(self.table.item(row, 2).text())
-
+        print(self.table.item(row, 3).text())
+        print(self.table.item(row, 4).text())
+        print(self.table.item(row, 5).text())
 
     def isiTable(self):
         query = GudangORM.dataGudang()
         self.table.setRowCount(len(query))
         for row in range(len(query)):
             #self.table.insertRow(1)
-            self.table.setItem(row,0,QTableWidgetItem(query[row].id_barang))
+            self.table.setItem(row,0,QTableWidgetItem(str(query[row].id_barang)))
             self.table.setItem(row,1,QTableWidgetItem(query[row].nama_produk))
             self.table.setItem(row,2,QTableWidgetItem(query[row].jumlah_barang))
+            self.table.setItem(row, 3, QTableWidgetItem(query[row].lokasi))
+            self.table.setItem(row, 4, QTableWidgetItem(query[row].tanggal_masuk))
+            self.table.setItem(row, 5, QTableWidgetItem(query[row].harga_barang))
 
 
 def Laporan():

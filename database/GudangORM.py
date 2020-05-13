@@ -8,10 +8,11 @@ class GudangORM(Base):
     nama_produk = Column(String)
     jumlah_barang = Column(String)
     lokasi = Column(String)
-    tanggal_masuk = Column(Date)
+    tanggal_masuk = Column(String)
     harga_barang = Column(String)
 
     def __init__(self, nama_produk, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
+        self.setWindowIcon(QtGui.QIcon('assets/img/icon.png'))
         self.nama_produk = nama_produk
         self.jumlah_barang = jumlah_barang
         self.lokasi = lokasi
@@ -33,17 +34,10 @@ class GudangORM(Base):
 
     @staticmethod
     def dataGudang():
-        try:
-            session = sessionFactory()
-            return session.query(GudangORM).all()
-            # for gudang in session.query(GudangORM).all():
-            #     print(
-            #         "Id barang = {}\n Jumlah barang = {}\n Lokasi = {}\n Tanggal Masuk = {} \n Harga barang = {} \n===================="
-            #             .format(gudang.id_barang, gudang.jumlah_barang, gudang.lokasi, gudang.tanggal_masuk,
-            #                     gudang.harga_barang))
+        session = sessionFactory()
+        return session.query(GudangORM).all()
+        session.close()
 
-        except Exception as e:
-            print("===>", e)
 
     @staticmethod
     def deleteGudang(id_barang):
@@ -78,5 +72,6 @@ class GudangORM(Base):
             print("Data telah Terupdate!")
 
 
-
+# for i in GudangORM.dataGudang():
+#     print(i.nama_produk)
 
