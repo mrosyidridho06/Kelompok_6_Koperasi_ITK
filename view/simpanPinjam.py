@@ -7,12 +7,9 @@ import sys
 class Tab(QDialog):
     def __init__(self):
         super().__init__()
-
         self.setWindowTitle("Input Gudang")
         self.setGeometry(200,200,500,300)
-
         self.setWindowTitle('Tab Widget')
-
         vbox = QVBoxLayout()
         tabWidget = QTabWidget()
 
@@ -23,8 +20,6 @@ class Tab(QDialog):
 
 
         self.setLayout(vbox)
-
-
 
 class inputSimpan(QWidget):
     def __init__(self):
@@ -116,4 +111,5 @@ if __name__ == "__main__":
     App.setStyle('fusion')
     tabDialog = Tab()
     tabDialog.show()
-    App.exec()
+    sys.exit(App.exec())
+
