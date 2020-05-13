@@ -18,6 +18,7 @@ class InputGudang(QWidget):
 
         self.nama = QLineEdit(self)
         self.nama.setPlaceholderText("Masukkan Barang")
+        self.nama.setFixedSize(200,20)
         self.form.addRow("Nama Barang : ", self.nama)
 
 
