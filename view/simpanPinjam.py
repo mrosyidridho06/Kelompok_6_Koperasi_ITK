@@ -12,8 +12,8 @@ class Tab(QDialog):
         vbox = QVBoxLayout()
         tabWidget = QTabWidget()
 
-        tabWidget.addTab(inputSimpan(), 'simpan')
-        tabWidget.addTab(inputPinjam(), 'pinjam')
+        tabWidget.addTab(inputSimpan(), 'Simpan')
+        tabWidget.addTab(inputPinjam(), 'Pinjam')
 
         vbox.addWidget(tabWidget)
 
@@ -49,8 +49,10 @@ class inputSimpan(QWidget):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
+        tm = QDateEdit()
+        tm.setCalendarPopup(True)
         layout.addRow(QLabel("Nama Nasabah :"), QLineEdit())
-        layout.addRow(QLabel("Tanggal :"), QDateEdit())
+        layout.addRow(QLabel("Tanggal :"), tm)
         layout.addRow(QLabel("Jumlah Simpan:"), QLineEdit())
         self.formGroupBox.setLayout(layout)
 
