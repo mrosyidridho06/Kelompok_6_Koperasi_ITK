@@ -1,14 +1,14 @@
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String, Integer, Date
 from database.base import Base, sessionFactory
 
 
 class GudangORM(Base):
-    __tablename__='gudangInt.py'
+    __tablename__='gudang'
 
     id_barang = Column(Integer, primary_key=True)
     jumlah_barang = Column(String)
     lokasi = Column(String)
-    tanggal_masuk = Column(String)
+    tanggal_masuk = Column(Date)
     harga_barang = Column(String)
 
     def __init__(self, jumlah_barang, lokasi, tanggal_masuk, harga_barang):

@@ -2,7 +2,9 @@ from Class.gudang import Gudang
 #from Model.base import sessionFactory,modelFactory
 from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import (QApplication, QDateEdit,QMessageBox, QComboBox, QTextEdit,QFrame, QFormLayout, QMainWindow, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout)
+from view.assets.lineEdit import lineEdit
 import sys
+
 
 class InputGudang(QWidget):
     def  __init__(self):
@@ -16,7 +18,7 @@ class InputGudang(QWidget):
 
         self.form = QFormLayout(self)
 
-        self.nama = QLineEdit(self)
+        self.nama = lineEdit("")
         self.nama.setPlaceholderText("Masukkan Barang")
         self.nama.setFixedSize(200,20)
         self.form.addRow("Nama Barang : ", self.nama)
