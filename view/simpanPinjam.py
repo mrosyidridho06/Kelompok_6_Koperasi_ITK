@@ -51,7 +51,7 @@ class inputSimpan(QWidget):
         layout = QFormLayout()
         layout.addRow(QLabel("Nama Nasabah :"), QLineEdit())
         layout.addRow(QLabel("Tanggal :"), QDateEdit())
-        layout.addRow(QLabel("Jumlah Simpan:"), QSpinBox())
+        layout.addRow(QLabel("Jumlah Simpan:"), QLineEdit())
         self.formGroupBox.setLayout(layout)
 
 
@@ -87,7 +87,7 @@ class inputPinjam(QWidget):
         layout = QFormLayout()
         layout.addRow(QLabel("Nama Nasabah :"), QLineEdit())
         layout.addRow(QLabel("Tanggal :"), QDateEdit())
-        layout.addRow(QLabel("Jumlah Pinjam:"), QSpinBox())
+        layout.addRow(QLabel("Jumlah Pinjam:"), QLineEdit())
         self.formGroupBox.setLayout(layout)
 
 if __name__ == "__main__":
