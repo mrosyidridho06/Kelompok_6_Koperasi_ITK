@@ -19,7 +19,7 @@ class Inputbarang(QWidget):
         right = 0
         width = 400
         height = 600
-        iconName = "icon.png"
+        iconName = "/view/img/icon.png"
 
 
         self.setWindowTitle(title)
@@ -46,6 +46,10 @@ class Inputbarang(QWidget):
         self.harga = QLineEdit(self)
         self.harga.setPlaceholderText("Harga")
         self.form.addRow("Harga", self.harga)
+
+        self.jumlah = QSpinBox(self)
+        self.form.addRow("Masukkan Jumlah", self.jumlah)
+
 
         self.submit = QPushButton(self)
         self.submit.setText("Tambah")
