@@ -1,7 +1,7 @@
-from sqlalchemy import Column, String, Integer, Text
+from sqlalchemy import Column, String, Integer, Text, Date
 from database.base import Base, sessionFactory
 
-class SimpanPinjamORM(base):
+class SimpanPinjamORM(Base):
     __tablename__='SimpanPinjam'
 
     id_nasabah = Column(Integer, primary_key=True)
@@ -9,8 +9,7 @@ class SimpanPinjamORM(base):
     jumlah_simpan = Column(Integer)
     jumlah_pinjam = Column(Integer)
 
-    def __init__(self, id_nasabah, tanggal, jumlah_simpan, jumlah_pinjam):
-        self.id_nasabah= id_nasabah
+    def __init__(self, tanggal, jumlah_simpan, jumlah_pinjam):
         self.tanggal = tanggal
         self.jumlah_simpan = jumlah_simpan
         self.jumlah_pinjam = jumlah_pinjam
@@ -19,7 +18,7 @@ class SimpanPinjamORM(base):
     def insertSimpanPinjam(self):
         try:
             session = sessionFactory()
-            simpanpinjam = SimpanPinjamORM(self.__id_nasabah, self.__tanggal, self.__jumlah_simpan,
+            simpanpinjam = SimpanPinjamORM(self.__tanggal, self.__jumlah_simpan,
                                            self.__jumlah_pinjam)
             session.add(simpanpinjam)
             session.commit()
@@ -31,16 +30,18 @@ class SimpanPinjamORM(base):
 
     @staticmethod
     def DataSimpanPinjam():
-        try:
+        # try:
             session = sessionFactory()
-            for simpanpinjam in session.query(SimpanPinjamORM).all():
-                print(
-                    "Id nasabah = {}\nTanggal = {}\nJumlah Simpanan = {}\nJumlah Pinjaman = {}\n===================="
-                        .format(simpanpinjam.id_nasabah, simpanpinjam.tanggal, simpanpinjam.jumlah_simpan,
-                                simpanpinjam.jumlah_pinjam))
+            return session.query(SimpanPinjamORM).all()
             session.close()
-        except Exception as e:
-            print("===>", e)
+            # for simpanpinjam in session.query(SimpanPinjamORM).all():
+            #     print(
+            #         "Id nasabah = {}\nTanggal = {}\nJumlah Simpanan = {}\nJumlah Pinjaman = {}\n===================="
+            #             .format(simpanpinjam.id_nasabah, simpanpinjam.tanggal, simpanpinjam.jumlah_simpan,
+            #                     simpanpinjam.jumlah_pinjam))
+            # session.close()
+        # except Exception as e:
+        #     print("===>", e)
 
     @staticmethod
     def deleteSimpanPinjam(id_nasabah):
@@ -72,3 +73,6 @@ class SimpanPinjamORM(base):
             print("===>", e)
         else:
             print("Data telah Terupdate!")
+
+# a=SimpanPinjamORM()
+# a.insertSimpanPinjam("21/05/2000",10000,10000)
