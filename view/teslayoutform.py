@@ -13,7 +13,7 @@ class inpotBarang(QWidget):
         right = 0
         width = 400
         height = 600
-        iconName = "img/icon.png"
+        iconName = "assets/img/icon.png"
 
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.formGroupBox)

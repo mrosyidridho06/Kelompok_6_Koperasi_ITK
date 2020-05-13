@@ -19,7 +19,7 @@ class Inputbarang(QWidget):
         right = 0
         width = 400
         height = 600
-        iconName = "img/icon.png"
+        iconName = "assets/img/icon.png"
 
 
         self.setWindowTitle(title)
