@@ -35,9 +35,12 @@ class inpotBarang(QWidget):
         self.formGroupBox = QGroupBox("Input Barang")
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
+
         layout.addRow(QLabel("Nama Barang :"), QLineEdit())
         layout.addRow(QLabel("Lokasi :"), QLineEdit())
-        layout.addRow(QLabel("Tanggal Masuk :"), QDateEdit())
+        tm = QDateEdit()
+        tm.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal Masuk :"), tm)
         layout.addRow(QLabel("Harga :"), QLineEdit())
         layout.addRow(QLabel("Jumlah :"), QSpinBox())
         self.formGroupBox.setLayout(layout)
