@@ -1,18 +1,12 @@
-from PyQt5.QtWidgets import (QPushButton, QApplication, QMainWindow, QLineEdit,
-                            QHBoxLayout, QVBoxLayout, QFormLayout, QLabel, QWidget, QDateEdit, QSpinBox, QDialog, QDialogButtonBox)
+from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout, QHBoxLayout, QSpinBox, QLabel, QFormLayout, QWidget, QGroupBox, QDateEdit
+from PyQt5 import QtGui
 from PyQt5 import QtCore
 import sys
-from PyQt5 import QtGui
 
-class Inputbarang(QWidget):
+class inpotBarang(QWidget):
     def __init__(self):
         super().__init__()
-
-        Label = QLabel("Input Barang")
-        Label.setAlignment(QtCore.Qt.AlignCenter)
-        submitbtn = QPushButton("Submit")
-        laporanbtn = QPushButton("Lihat Laporan")
-
+        self.createFormGroupBox()
 
         title = "Koperasi ITK"
         left = 0
@@ -21,56 +15,37 @@ class Inputbarang(QWidget):
         height = 600
         iconName = "assets/img/icon.png"
 
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(self.formGroupBox)
+
+        submitBtn = QPushButton("Submit")
+        laporanBtn = QPushButton("Lihat Laporan")
+
+        mainLayout.addWidget(submitBtn)
+        mainLayout.addWidget(laporanBtn)
 
         self.setWindowTitle(title)
         self.setWindowIcon(QtGui.QIcon(iconName))
         self.setGeometry(left, right, height, width)
-        self.inputBarang()
+        self.setLayout(mainLayout)
+
         self.show()
 
-    def inputBarang(self):
-        self.form = QFormLayout(self)
+    def createFormGroupBox(self):
+        self.formGroupBox = QGroupBox("Input Barang")
+        self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
+        layout = QFormLayout()
 
-        self.barang = QLineEdit(self)
-        self.barang.setPlaceholderText("Nama Barang")
-        self.form.addRow("Nama Barang", self.barang)
-
-        self.lokasi = QLineEdit(self)
-        self.lokasi.setPlaceholderText("Lokasi")
-        self.form.addRow("Lokasi", self.lokasi)
-
-        self.tglMasuk = QDateEdit(self)
-        self.tglMasuk.setCalendarPopup(True)
-        self.form.addRow("Tanggal Masuk", self.tglMasuk)
-
-        self.harga = QLineEdit(self)
-        self.harga.setPlaceholderText("Harga")
-        self.form.addRow("Harga", self.harga)
-
-        self.jumlah = QSpinBox(self)
-        self.form.addRow("Masukkan Jumlah", self.jumlah)
-
-        self.submit = QPushButton(self)
-        self.submit.setText("Tambah")
-        self.submit.clicked.connect(self.submit_btn)
-
-        self.laporan = QPushButton(self)
-        self.laporan.setText("Laporan")
-
-        self.form.addRow(self.submit,self.laporan)
-
-
-    def submit_btn(self):
-        print("Nama Barang : {}\nLokasi : {}\nTanggal Masuk : {}\nHarga : {}\nJumlah : {}".
-        format(self.nama.text(),
-        self.noTel.text(),
-        self.alamat.toPlainText(),
-        self.jk.currentText(),
-        self.Nik.text(),
-        self.tglLahir.text()))
+        layout.addRow(QLabel("Nama Barang :"), QLineEdit())
+        layout.addRow(QLabel("Lokasi :"), QLineEdit())
+        tm = QDateEdit()
+        tm.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal Masuk :"), tm)
+        layout.addRow(QLabel("Harga :"), QLineEdit())
+        layout.addRow(QLabel("Jumlah :"), QSpinBox())
+        self.formGroupBox.setLayout(layout)
 
 if __name__ == "__main__":
     App = QApplication(sys.argv)
-    inBarang = Inputbarang()
+    inBarang = inpotBarang()
     sys.exit(App.exec())
-
