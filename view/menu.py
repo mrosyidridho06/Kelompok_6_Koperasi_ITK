@@ -16,7 +16,7 @@ class Window(QDialog):
         self.InitWindow()
 
     def InitWindow(self):
-        self.setWindowIcon(QtGui.QIcon('kaki.png'))
+        self.setWindowIcon(QtGui.QIcon('assets/img/icon.png'))
         self.setWindowTitle(self.title)
         self.setGeometry(self.top, self.left, self.width, self.height)
 
