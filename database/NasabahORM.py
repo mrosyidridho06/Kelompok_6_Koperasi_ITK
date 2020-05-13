@@ -71,3 +71,5 @@ class NasabahORM(Base):
             print("===>", e)
         else:
             print("Data telah Terupdate!")
+
+NasabahORM.DataNasabah()

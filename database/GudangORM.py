@@ -3,18 +3,16 @@ from database.base import Base, sessionFactory
 
 
 class GudangORM(Base):
-
     __tablename__='gudang'
-
- 
-
     id_barang = Column(Integer, primary_key=True)
+    nama_produk = Column(String)
     jumlah_barang = Column(String)
     lokasi = Column(String)
     tanggal_masuk = Column(Date)
     harga_barang = Column(String)
 
-    def __init__(self, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
+    def __init__(self, nama_produk, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
+        self.nama_produk = nama_produk
         self.jumlah_barang = jumlah_barang
         self.lokasi = lokasi
         self.tanggal_masuk = tanggal_masuk
@@ -24,7 +22,7 @@ class GudangORM(Base):
     def insertGudang(self):
         try:
             session = sessionFactory()
-            gudang = GudangORM(self.__jumlah_barang, self.__lokasi, self.__tanggal_masuk, self.__harga_barang)
+            gudang = GudangORM(self.nama_produk, self.__jumlah_barang, self.__lokasi, self.__tanggal_masuk, self.__harga_barang)
             session.add(gudang)
             session.commit()
             session.close()
@@ -37,12 +35,13 @@ class GudangORM(Base):
     def dataGudang():
         try:
             session = sessionFactory()
-            for gudang in session.query(GudangORM).all():
-                print(
-                    "Id barang = {}\n Jumlah barang = {}\n Lokasi = {}\n Tanggal Masuk = {} \n Harga barang = {} \n===================="
-                        .format(gudang.id_barang, gudang.jumlah_barang, gudang.lokasi, gudang.tanggal_masuk,
-                                gudang.harga_barang))
-            session.close()
+            return session.query(GudangORM).all()
+            # for gudang in session.query(GudangORM).all():
+            #     print(
+            #         "Id barang = {}\n Jumlah barang = {}\n Lokasi = {}\n Tanggal Masuk = {} \n Harga barang = {} \n===================="
+            #             .format(gudang.id_barang, gudang.jumlah_barang, gudang.lokasi, gudang.tanggal_masuk,
+            #                     gudang.harga_barang))
+
         except Exception as e:
             print("===>", e)
 
@@ -61,13 +60,14 @@ class GudangORM(Base):
     @staticmethod
     def updateGudang(id_barang):
         try:
+            newNama_produk = input("Masukkan Nama Produk : ")
             newJumlah_barang = input("Jumlah Barang : ")
             newLokasi = input("Lokasi : ")
             newTanggal_masuk = input("Tanggal Masuk : ")
             newHarga_barang = input("Harga Barang : ")
             session = sessionFactory()
             session.query(GudangORM).filter_by(id_barang=id_barang).update({
-                GudangORM.jumlah_barang: newJumlah_barang, GudangORM.lokasi: newLokasi,
+                GudangORM.jumlah_barang: newJumlah_barang, GudangORM.nama_produk: newNama_produk, GudangORM.lokasi: newLokasi,
                 GudangORM.tanggal_masuk: newTanggal_masuk, GudangORM.harga_barang: newHarga_barang
             }, synchronize_session=False)
             session.commit()
@@ -76,3 +76,7 @@ class GudangORM(Base):
             print("===>", e)
         else:
             print("Data telah Terupdate!")
+
+
+
+
