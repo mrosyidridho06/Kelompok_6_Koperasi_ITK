@@ -50,14 +50,18 @@ class Inputbarang(QWidget):
         self.jumlah = QSpinBox(self)
         self.form.addRow("Masukkan Jumlah", self.jumlah)
 
-
         self.submit = QPushButton(self)
         self.submit.setText("Tambah")
         self.submit.clicked.connect(self.submit_btn)
-        self.form.addRow(self.submit)
+
+        self.laporan = QPushButton(self)
+        self.laporan.setText("Laporan")
+
+        self.form.addRow(self.submit,self.laporan)
+
 
     def submit_btn(self):
-        print("Nama : {}\nNo Telpon : {}\nAlamat : {}\nJenis Kelamin : {}\nNIK : {}\nTangal Lahir :{}".
+        print("Nama Barang : {}\nLokasi : {}\nTanggal Masuk : {}\nHarga : {}\nJumlah : {}".
         format(self.nama.text(),
         self.noTel.text(),
         self.alamat.toPlainText(),
