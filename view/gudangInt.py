@@ -2,8 +2,9 @@ from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout, Q
 from PyQt5 import QtGui
 from PyQt5 import QtCore
 import sys
+from view.gudangView import LaporanGudang
 
-class inpotBarang(QWidget):
+class inputBarang(QWidget):
     def __init__(self):
         super().__init__()
         self.createFormGroupBox()
@@ -18,17 +19,21 @@ class inpotBarang(QWidget):
         mainLayout.addWidget(self.formGroupBox)
 
         submitBtn = QPushButton("Submit")
+
+
+        self.report = LaporanGudang()
         laporanBtn = QPushButton("Lihat Laporan")
+        laporanBtn.clicked.connect(self.Lihat)
 
         mainLayout.addWidget(submitBtn)
         mainLayout.addWidget(laporanBtn)
+
 
         self.setWindowTitle(title)
         self.setWindowIcon(QtGui.QIcon(iconName))
         self.setGeometry(left, right, height, width)
         self.setLayout(mainLayout)
 
-        self.show()
 
     def createFormGroupBox(self):
         self.formGroupBox = QGroupBox("Input Gudang")
@@ -58,8 +63,14 @@ class inpotBarang(QWidget):
 
         self.formGroupBox.setLayout(self.layout)
 
+    def Lihat(self):
+        self.report.show()
+
+
 if __name__ == "__main__":
     App = QApplication(sys.argv)
     App.setStyle("fusion")
-    inBarang = inpotBarang()
+    window = inputBarang()
+    window.show()
+    inBarang = inputBarang()
     sys.exit(App.exec())

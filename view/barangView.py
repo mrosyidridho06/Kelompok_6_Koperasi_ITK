@@ -1,16 +1,16 @@
 from PyQt5.QtWidgets import (QApplication, QAbstractItemView,QMessageBox,QMainWindow, QWidget,QHBoxLayout, QPushButton,QTableWidget,QTableWidgetItem,QVBoxLayout)
 import sys
-from database.GudangORM import GudangORM
+from database.BarangORM import BarangORM
 
-class LaporanGudang(QMainWindow):
+class LaporanBarang(QMainWindow):
     def  __init__(self):
-        super(LaporanGudang,self).__init__()
+        super(LaporanBarang,self).__init__()
         self.Tampilan()
 
 
 
     def Tampilan(self):
-        self.setWindowTitle("Laporan Gudang")
+        self.setWindowTitle("Laporan Barang")
         #self.setGeometry(200, 200, 900, 500)
         self.create_table()
 
@@ -34,12 +34,12 @@ class LaporanGudang(QMainWindow):
         print(self.table.item(row, 5).text())
 
     def isiTable(self):
-        query = GudangORM.dataGudang()
+        query = BarangORM.dataBarang()
         self.table.setRowCount(len(query))
         for row in range(len(query)):
             #self.table.insertRow(1)
             self.table.setItem(row,0,QTableWidgetItem(str(query[row].id_barang)))
-            self.table.setItem(row,1,QTableWidgetItem(query[row].nama_produk))
+            self.table.setItem(row,1,QTableWidgetItem(query[row].nama_barang))
             self.table.setItem(row,2,QTableWidgetItem(query[row].jumlah_barang))
             self.table.setItem(row, 3, QTableWidgetItem(query[row].lokasi))
             self.table.setItem(row, 4, QTableWidgetItem(query[row].tanggal_masuk))
@@ -48,7 +48,7 @@ class LaporanGudang(QMainWindow):
 
 def Laporan():
     app = QApplication([sys.argv])
-    win = LaporanGudang()
+    win = LaporanBarang()
     win.show()
     sys.exit(app.exec_())
 

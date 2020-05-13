@@ -3,6 +3,9 @@ import sys
 from PyQt5 import QtGui,QtCore
 from PyQt5.QtGui import QPixmap
 
+from view.gudangInt import inputBarang
+from view.simpanPinjam import Tab
+
 class Window(QDialog):
     def __init__(self):
         super().__init__()
@@ -26,29 +29,42 @@ class Window(QDialog):
 
         self.setLayout(vbox)
 
-        self.show()
+
 
     def createLayout(self):
         self.groupBox = QGroupBox('Pilih Menu')
         hboxlayout = QHBoxLayout()
 
-        button1 = QPushButton('kaki 1', self)
+        self.simpanan = Tab()
+        self.gudang = inputBarang()
+
+
+        button1 = QPushButton('Simpan Pinjam', self)
         button1.setIcon(QtGui.QIcon('kaki.png'))
         button1.setIconSize(QtCore.QSize(40,40))
         button1.setMinimumHeight(50)
         button1.setMinimumWidth(150)
         hboxlayout.addWidget(button1)
+        button1.clicked.connect(self.simpanPinjam)
 
-        button2 = QPushButton('kaki 2', self)
+        button2 = QPushButton('Gudang', self)
         button2.setIcon(QtGui.QIcon('kaki.png'))
         button2.setIconSize(QtCore.QSize(40,40))
         button2.setMinimumHeight(50)
         button2.setMinimumWidth(150)
         hboxlayout.addWidget(button2)
+        button2.clicked.connect(self.Gudang)
 
         self.groupBox.setLayout(hboxlayout)
+
+    def simpanPinjam(self):
+        self.simpanan.show()
+
+    def Gudang(self):
+        self.gudang.show()
 
 if __name__ == "__main__" :
     App = QApplication(sys.argv)
     window = Window()
+    window.show()
     sys.exit(App.exec())

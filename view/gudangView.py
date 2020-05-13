@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import (QApplication, QAbstractItemView,QMessageBox,QMainWi
 import sys
 from database.GudangORM import GudangORM
 
+
 class LaporanGudang(QMainWindow):
     def  __init__(self):
         super(LaporanGudang,self).__init__()
@@ -55,4 +56,3 @@ def Laporan():
     win.show()
     sys.exit(app.exec_())
 
-Laporan()

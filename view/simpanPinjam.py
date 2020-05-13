@@ -113,6 +113,7 @@ class inputPinjam(QWidget):
 
 if __name__ == "__main__":
     App = QApplication(sys.argv)
+    App.setStyle('fusion')
     tabDialog = Tab()
     tabDialog.show()
     App.exec()
