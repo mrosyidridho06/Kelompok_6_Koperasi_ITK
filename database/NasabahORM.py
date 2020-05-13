@@ -72,4 +72,3 @@ class NasabahORM(Base):
         else:
             print("Data telah Terupdate!")
 
-NasabahORM.DataNasabah()

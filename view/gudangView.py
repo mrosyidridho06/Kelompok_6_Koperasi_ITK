@@ -22,8 +22,8 @@ class LaporanGudang(QMainWindow):
     def create_table(self):
         self.table = QTableWidget(self)
         self.table.cellClicked.connect(self.cek)
-        self.table.setColumnCount(3)
-        self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah","Lokasi","Tanggal","Harga"])
+        self.table.setColumnCount(5)
+        self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah","Lokasi","Tanggal Masuk","Harga"])
         self.table.setFixedSize(741,350)
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.isiTable()

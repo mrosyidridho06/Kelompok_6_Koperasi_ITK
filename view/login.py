@@ -40,6 +40,7 @@ loginBtn = QPushButton('Masuk', mainWindow)
 loginBtn.setFixedSize(300,25)
 loginBtn.move(50,180)
 
+
 def leditAktif():
     usr = ledit.text()
     iniLabel.setText(usr)
