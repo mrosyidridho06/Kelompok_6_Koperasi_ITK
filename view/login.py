@@ -37,7 +37,7 @@ ledit2.resize(180,25)
 ledit2.move(170,140)
 
 loginBtn = QPushButton('Masuk', mainWindow)
-loginBtn.setFixedSize(300,25)
+loginBtn.size(300,25)
 loginBtn.move(50,180)
 
 

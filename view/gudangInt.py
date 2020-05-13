@@ -1,55 +1,65 @@
-from Class.gudang import Gudang
-#from Model.base import sessionFactory,modelFactory
-from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import (QApplication, QDateEdit,QMessageBox, QComboBox, QTextEdit,QFrame, QFormLayout, QMainWindow, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout)
-from view.assets.lineEdit import lineEdit
+from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout, QHBoxLayout, QSpinBox, QLabel, QFormLayout, QWidget, QGroupBox, QDateEdit
+from PyQt5 import QtGui
+from PyQt5 import QtCore
 import sys
 
+class inpotBarang(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.createFormGroupBox()
 
-class InputGudang(QWidget):
-    def  __init__(self):
-        super(InputGudang,self).__init__()
-        self.setWindowTitle("Input Gudang")
-        self.setGeometry(200,200,400,250)
-        self.Tampilan()
+        title = "Koperasi ITK"
+        left = 0
+        right = 0
+        width = 400
+        height = 600
+        iconName = "assets/img/icon.png"
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(self.formGroupBox)
 
+        submitBtn = QPushButton("Submit")
+        laporanBtn = QPushButton("Lihat Laporan")
 
-    def Tampilan(self):
+        mainLayout.addWidget(submitBtn)
+        mainLayout.addWidget(laporanBtn)
 
-        self.form = QFormLayout(self)
-        self.nama = lineEdit("")
-        self.nama.setPlaceholderText("Masukkan Barang")
-        self.nama.setFixedSize(200,20)
-        self.form.addRow("Nama Barang : ", self.nama)
+        self.setWindowTitle(title)
+        self.setWindowIcon(QtGui.QIcon(iconName))
+        self.setGeometry(left, right, height, width)
+        self.setLayout(mainLayout)
 
+        self.show()
+
+    def createFormGroupBox(self):
+        self.formGroupBox = QGroupBox("Input Gudang")
+        self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
+        self.layout = QFormLayout()
+
+        self.nama = QLineEdit(self)
+
+        self.nama.setPlaceholderText("Masukkan Nama Barang ")
+        self.layout.addRow("Nama Barang :", self.nama)
 
         self.lokasi = QLineEdit(self)
-        self.lokasi.setPlaceholderText("Masukkan Lokasi")
-        self.form.addRow("Lokasi : ", self.lokasi)
+        self.lokasi.setPlaceholderText("Masukkan Lokasi Barang ")
+        self.layout.addRow("Lokasi :", self.lokasi)
 
-        self.tanggal = QDateEdit(self)
-        self.form.addRow("Tanggal : ", self.tanggal)
+        self.tanggal = QDateEdit()
+        self.tanggal.setCalendarPopup(True)
+        self.layout.addRow(QLabel("Tanggal Masuk :"), self.tanggal)
 
         self.harga = QLineEdit(self)
-        self.harga.setPlaceholderText("Masukkan Harga")
-        self.form.addRow("Harga : ", self.harga)
+        self.harga.setPlaceholderText("Masukkan Harga ")
+        self.layout.addRow("Harga :", self.harga)
 
-        self.jumlah = QLineEdit(self)
-        self.jumlah.setPlaceholderText("Masukkan Jumlah")
-        self.form.addRow("Jumlah : ", self.jumlah)
 
-        self.btn = QPushButton(self)
-        self.btn.setText("Tombol")
-        self.btn.clicked.connect(self.btn_clear)
-        self.form.addRow(self.btn)
+        self.jumlah = QSpinBox(self)
+        self.layout.addRow("Jumlah :", self.jumlah)
 
-    def btn_clear(self):
-        pass
+        self.formGroupBox.setLayout(self.layout)
 
-def Tambahgudang():
-    app = QApplication([sys.argv])
-    win = InputGudang()
-    win.show()
-    sys.exit(app.exec_())
-
-Tambahgudang()
+if __name__ == "__main__":
+    App = QApplication(sys.argv)
+    App.setStyle("fusion")
+    inBarang = inpotBarang()
+    sys.exit(App.exec())
