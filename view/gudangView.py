@@ -1,7 +1,7 @@
 from Class.gudang import Gudang
 #from Model.base import sessionFactory,modelFactory
 from PyQt5.QtGui import QIntValidator
-from PyQt5.QtWidgets import (QApplication, QDateEdit,QMessageBox, QComboBox, QTextEdit,QFrame, QFormLayout, QMainWindow, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout)
+from PyQt5.QtWidgets import (QApplication, QDateEdit, QSpinBox, QComboBox, QTextEdit,QFrame, QFormLayout, QMainWindow, QWidget, QPushButton, QLabel, QLineEdit, QGridLayout)
 import sys
 
 class InputGudang(QWidget):
@@ -33,8 +33,7 @@ class InputGudang(QWidget):
         self.harga.setPlaceholderText("Masukkan Harga")
         self.form.addRow("Harga : ", self.harga)
 
-        self.jumlah = QLineEdit(self)
-        self.jumlah.setPlaceholderText("Masukkan Jumlah")
+        self.jumlah = QSpinBox(self)
         self.form.addRow("Jumlah : ", self.jumlah)
 
         self.btn = QPushButton(self)

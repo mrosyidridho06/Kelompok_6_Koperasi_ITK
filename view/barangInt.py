@@ -14,12 +14,12 @@ class Inputbarang(QWidget):
         laporanbtn = QPushButton("Lihat Laporan")
 
 
-        title = "Koperasi Itk"
+        title = "Koperasi ITK"
         left = 0
         right = 0
         width = 400
         height = 600
-        iconName = "/view/img/icon.png"
+        iconName = "img/icon.png"
 
 
         self.setWindowTitle(title)
