@@ -3,7 +3,7 @@ from database.base import Base, sessionFactory
 
 
 class GudangORM(Base):
-    __tablename__='gudangView.py'
+    __tablename__='gudangInt.py'
 
     id_barang = Column(Integer, primary_key=True)
     jumlah_barang = Column(String)
