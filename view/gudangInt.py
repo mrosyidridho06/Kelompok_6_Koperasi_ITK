@@ -17,7 +17,6 @@ class InputGudang(QWidget):
     def Tampilan(self):
 
         self.form = QFormLayout(self)
-
         self.nama = lineEdit("")
         self.nama.setPlaceholderText("Masukkan Barang")
         self.nama.setFixedSize(200,20)
