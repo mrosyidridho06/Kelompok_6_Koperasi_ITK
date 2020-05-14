@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout,  QSpinBox, QLabel, QFormLayout,  QGroupBox, QDateEdit ,QDialog, QTabWidget, QWidget
+from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout,QMessageBox, QSpinBox, QLabel, QFormLayout,  QGroupBox, QDateEdit ,QDialog, QTabWidget, QWidget
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
+from database.SimpanPinjamORM import SimpanPinjamORM
 import sys
 
 class Tab(QDialog):
@@ -37,9 +38,10 @@ class inputSimpan(QWidget):
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.formGroupBox)
 
-        submitBtn = QPushButton("Submit")
+        self.submitBtn = QPushButton("Submit")
+        self.submitBtn.clicked.connect(self.submit_btn)
 
-        mainLayout.addWidget(submitBtn)
+        mainLayout.addWidget(self.submitBtn)
 
         self.setWindowTitle(title)
         self.setWindowIcon(QtGui.QIcon(iconName))
@@ -58,10 +60,40 @@ class inputSimpan(QWidget):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
-        layout.addRow(QLabel("Nama Nasabah :"), QLineEdit())
-        layout.addRow(QLabel("Tanggal :"), QDateEdit())
-        layout.addRow(QLabel("Jumlah Simpan:"), QLineEdit())
+
+        self.nama = QLineEdit()
+        layout.addRow("Nama Nasabah :", self.nama)
+
+        self.tanggal = QDateEdit()
+        self.tanggal.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal :"), self.tanggal)
+
+        self.jumlahsimpan = QLineEdit()
+        layout.addRow("Jumlah Simpan:", self.jumlahsimpan)
+
         self.formGroupBox.setLayout(layout)
+
+    def submit_btn(self):
+        try:
+            x = SimpanPinjamORM(self.nama.text(),
+                                self.tanggal.text(),
+                                self.jumlahsimpan.text(),
+                                0)
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Data Telah Disimpan")
+            msg.setWindowTitle("Berhasil")
+            s = msg.exec_()
+            # self.clear_btn()
+        except Exception as e:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Data Gagal Input")
+            msg.setInformativeText(f"KESALAHAN : {e}")
+            msg.setWindowTitle("Gagal")
+            s = msg.exec_()
 
 
 class inputPinjam(QWidget):
@@ -79,9 +111,10 @@ class inputPinjam(QWidget):
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.formGroupBox)
 
-        submitBtn = QPushButton("Submit")
+        self.submitBtn = QPushButton("Submit")
+        self.submitBtn.clicked.connect(self.submit_btn)
 
-        mainLayout.addWidget(submitBtn)
+        mainLayout.addWidget(self.submitBtn)
 
         self.setWindowTitle(title)
         self.setWindowIcon(QtGui.QIcon(iconName))
@@ -101,10 +134,41 @@ class inputPinjam(QWidget):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
-        layout.addRow(QLabel("Nama Nasabah :"), QLineEdit())
-        layout.addRow(QLabel("Tanggal :"), QDateEdit())
-        layout.addRow(QLabel("Jumlah Pinjam:"), QLineEdit())
+
+        self.nama =  QLineEdit()
+        layout.addRow("Nama Nasabah :",self.nama)
+
+        self.tanggal = QDateEdit()
+        self.tanggal.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal :"), self.tanggal)
+
+        self.jumlahpinjam = QLineEdit()
+        layout.addRow("Jumlah Pinjam:",self.jumlahpinjam)
+
+
         self.formGroupBox.setLayout(layout)
+
+    def submit_btn(self):
+        try:
+            x = SimpanPinjamORM(self.nama.text(),
+                        self.tanggal.text(),
+                        0,
+                        self.jumlahpinjam.text())
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Data Telah Disimpan")
+            msg.setWindowTitle("Berhasil")
+            s = msg.exec_()
+            # self.clear_btn()
+        except Exception as e:
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Information)
+
+            msg.setText("Data Gagal Input")
+            msg.setInformativeText(f"KESALAHAN : {e}")
+            msg.setWindowTitle("Gagal")
+            s = msg.exec_()
 
 if __name__ == "__main__":
     App = QApplication(sys.argv)

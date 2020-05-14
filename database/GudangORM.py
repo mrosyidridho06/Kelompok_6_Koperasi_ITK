@@ -4,6 +4,7 @@ from database.base import Base, sessionFactory, modelFactory
 
 class GudangORM(Base):
     __tablename__='gudang'
+
     id_barang = Column(Integer, primary_key=True)
     nama_produk = Column(String)
     jumlah_barang = Column(String)

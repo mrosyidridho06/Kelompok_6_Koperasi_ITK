@@ -1,32 +1,39 @@
-from sqlalchemy import Column, String, Integer, Text, Date
-from database.base import Base, sessionFactory
+from sqlalchemy import Column, String, Integer
+from database.base import Base, sessionFactory, modelFactory
 
 class SimpanPinjamORM(Base):
     __tablename__='SimpanPinjam'
 
     id_nasabah = Column(Integer, primary_key=True)
-    tanggal = Column(Date)
+    nama_nasabah = Column(String)
+    tanggal = Column(String)
     jumlah_simpan = Column(Integer)
     jumlah_pinjam = Column(Integer)
 
-    def __init__(self, tanggal, jumlah_simpan, jumlah_pinjam):
+    def __init__(self, nama_nasabah, tanggal, jumlah_simpan, jumlah_pinjam):
+        session = sessionFactory()
+        self.nama_nasabah = nama_nasabah
         self.tanggal = tanggal
         self.jumlah_simpan = jumlah_simpan
         self.jumlah_pinjam = jumlah_pinjam
+        session.add(self)
+        session.commit()
+        session.close()
 
-    @staticmethod
-    def insertSimpanPinjam(self):
-        try:
-            session = sessionFactory()
-            simpanpinjam = SimpanPinjamORM(self.__tanggal, self.__jumlah_simpan,
-                                           self.__jumlah_pinjam)
-            session.add(simpanpinjam)
-            session.commit()
-            session.close()
-        except Exception as e:
-            print("===>", e)
-        else:
-            print("Data telah Disimpan!")
+
+    # @staticmethod
+    # def insertSimpanPinjam(self):
+    #     try:
+    #         session = sessionFactory()
+    #         simpanpinjam = SimpanPinjamORM(self.__tanggal, self.__jumlah_simpan,
+    #                                        self.__jumlah_pinjam)
+    #         session.add(simpanpinjam)
+    #         session.commit()
+    #         session.close()
+    #     except Exception as e:
+    #         print("===>", e)
+    #     else:
+    #         print("Data telah Disimpan!")
 
     @staticmethod
     def DataSimpanPinjam():
@@ -76,3 +83,4 @@ class SimpanPinjamORM(Base):
 
 # a=SimpanPinjamORM()
 # a.insertSimpanPinjam("21/05/2000",10000,10000)
+modelFactory()
