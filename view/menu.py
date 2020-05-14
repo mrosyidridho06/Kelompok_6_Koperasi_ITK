@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QGroupBox, QHBoxLayout, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QGroupBox, QHBoxLayout, QVBoxLayout, QLabel, QMainWindow
 import sys
 from PyQt5 import QtGui,QtCore
 from PyQt5.QtGui import QPixmap
@@ -6,7 +6,7 @@ from PyQt5.QtGui import QPixmap
 from view.gudangInt import inputBarang
 from view.simpanPinjam import Tab
 
-class Window(QDialog):
+class Window(QDialog, QMainWindow):
     def __init__(self):
         super().__init__()
 
