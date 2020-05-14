@@ -9,7 +9,8 @@ from database.GudangORM import GudangORM
 class LaporanGudang(QMainWindow):
     def  __init__(self):
         super(LaporanGudang,self).__init__()
-        self.Tampilan()
+
+
 
 
 
@@ -17,6 +18,7 @@ class LaporanGudang(QMainWindow):
         self.setWindowTitle("Laporan Gudang")
         #self.setGeometry(200, 200, 900, 500)
         self.create_table()
+
 
 
 

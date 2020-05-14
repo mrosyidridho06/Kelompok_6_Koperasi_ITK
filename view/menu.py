@@ -36,7 +36,10 @@ class Window(QDialog):
         hboxlayout = QHBoxLayout()
 
         self.simpanan = Tab()
+        self.setCentralWidget(self.simpanan)
+
         self.gudang = inputBarang()
+        self.setCentraWidget(self.gudang)
 
 
         button1 = QPushButton('Simpan Pinjam', self)
@@ -63,8 +66,9 @@ class Window(QDialog):
     def Gudang(self):
         self.gudang.show()
 
-if __name__ == "__main__" :
+def menu():
     App = QApplication(sys.argv)
     window = Window()
     window.show()
     sys.exit(App.exec())
+
