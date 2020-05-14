@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QGroupBox, QHBoxLayout, QVBoxLayout, QLabel, QMainWindow
+from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QGroupBox, QHBoxLayout, QVBoxLayout, QLabel, QMainWindow,
 import sys
 from PyQt5 import QtGui,QtCore
 from PyQt5.QtGui import QPixmap

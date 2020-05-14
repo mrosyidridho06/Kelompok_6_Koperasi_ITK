@@ -9,8 +9,7 @@ from database.GudangORM import GudangORM
 class LaporanGudang(QMainWindow):
     def  __init__(self):
         super(LaporanGudang,self).__init__()
-
-
+        self.Tampilan()
 
 
 
@@ -24,20 +23,20 @@ class LaporanGudang(QMainWindow):
 
     def create_table(self):
         self.table = QTableWidget(self)
-        self.table.cellClicked.connect(self.cek)
+        # self.table.cellClicked.connect(self.cek)
         self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah","Lokasi","Tanggal Masuk","Harga"])
         self.table.setFixedSize(741,350)
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.isiTable()
 
-    def cek(self, row):
-        print(self.table.item(row, 0).text())
-        print(self.table.item(row, 1).text())
-        print(self.table.item(row, 2).text())
-        print(self.table.item(row, 3).text())
-        print(self.table.item(row, 4).text())
-        print(self.table.item(row, 5).text())
+    # def cek(self, row):
+    #     print(self.table.item(row, 0).text())
+    #     print(self.table.item(row, 1).text())
+    #     print(self.table.item(row, 2).text())
+    #     print(self.table.item(row, 3).text())
+    #     print(self.table.item(row, 4).text())
+    #     print(self.table.item(row, 5).text())
 
     def isiTable(self):
         query = GudangORM.dataGudang()
@@ -57,3 +56,4 @@ def Laporan():
     win = LaporanGudang()
     win.show()
     sys.exit(app.exec_())
+
