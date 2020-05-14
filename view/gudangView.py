@@ -57,4 +57,3 @@ def Laporan():
     win = LaporanGudang()
     win.show()
     sys.exit(app.exec_())
-

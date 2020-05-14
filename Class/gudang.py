@@ -1,17 +1,36 @@
+from database.base import sessionFactory
+from database.GudangORM import GudangORM
 
 class Gudang:
-    def __init__(self, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
+    def __init__(self,nama_produk, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
+        self.__nama_produk = nama_produk
         self.__jumlah_barang = jumlah_barang
         self.__lokasi = lokasi
         self.__tanggal_masuk = tanggal_masuk
         self.__harga_barang = harga_barang
+        self.InsertGudang()
+
+    def InsertGudang(self):
+        x = GudangORM(self.__nama_produk,
+                        self.__jumlah_barang,
+                        self.__lokasi,
+                        self.__tanggal_masuk,
+                        self.__harga_barang)
+
+    @property
+    def nama_produk(self):
+        return  self.__nama_produk
+
+    @nama_produk.setter
+    def nama_produk(self, nama_produk):
+        self.__nama_produk = nama_produk
 
     @property
     def jumlah_barang(self):
         return self.__jumlah_barang
 
     @jumlah_barang.setter
-    def jumlah_barang(self,jumlah_barang):
+    def jumlah_barang(self, jumlah_barang):
         self.__jumlah_barang = jumlah_barang
 
     @property

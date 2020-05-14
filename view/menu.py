@@ -36,10 +36,10 @@ class Window(QDialog, QMainWindow):
         hboxlayout = QHBoxLayout()
 
         self.simpanan = Tab()
-        self.setCentralWidget(self.simpanan)
+        # self.setCentralWidget(self.simpanan)
 
         self.gudang = inputBarang()
-        self.setCentraWidget(self.gudang)
+        # self.setCentraWidget(self.gudang)
 
 
         button1 = QPushButton('Simpan Pinjam', self)

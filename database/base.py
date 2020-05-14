@@ -2,11 +2,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-Base = declarative_base()
-engine = create_engine('sqlite:///database/kantin.db')
 
-_SessionFactory = sessionmaker(bind=engine)
+engine = create_engine('sqlite:///database/kantin.db')
+Base = declarative_base()
+
+def modelFactory():
+    return Base.metadata.create_all(bind=engine)
+
+
+SessionFactory = sessionmaker(bind=engine)
+SessionFactory.configure(bind=engine)
 
 def sessionFactory():
-    Base.metadata.create_all(engine)
-    return _SessionFactory()
+    return SessionFactory()
+modelFactory()
