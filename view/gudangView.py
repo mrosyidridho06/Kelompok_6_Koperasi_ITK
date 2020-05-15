@@ -26,8 +26,8 @@ class LaporanGudang(QMainWindow):
     def create_table(self):
         self.table = QTableWidget(self)
         # self.table.cellClicked.connect(self.cek)
-        self.table.setColumnCount(5)
-        self.table.setHorizontalHeaderLabels(["ID","NAMA","Jumlah","Lokasi","Tanggal Masuk","Harga"])
+        self.table.setColumnCount(6)
+        self.table.setHorizontalHeaderLabels(["ID","NAMA","Lokasi","Tanggal Masuk","Harga","Jumlah"])
         self.table.setFixedSize(830,430)
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.isiTable()
@@ -49,7 +49,7 @@ class LaporanGudang(QMainWindow):
             self.table.setItem(row,1,QTableWidgetItem(query[row].nama_produk))
             self.table.setItem(row,2,QTableWidgetItem(query[row].jumlah_barang))
             self.table.setItem(row, 3, QTableWidgetItem(query[row].lokasi))
-            self.table.setItem(row, 4, QTableWidgetItem(query[row].tanggal_masuk))
+            self.table.setItem(row, 4,QTableWidgetItem(query[row].tanggal_masuk))
             self.table.setItem(row, 5, QTableWidgetItem(query[row].harga_barang))
 
 
