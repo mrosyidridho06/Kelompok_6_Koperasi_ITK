@@ -16,7 +16,7 @@ class inputBarang(QWidget):
         right = 0
         width = 400
         height = 600
-        iconName = "assets/img/icon.png"
+        iconName = "view/assets/img/icon.png"
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.formGroupBox)
 

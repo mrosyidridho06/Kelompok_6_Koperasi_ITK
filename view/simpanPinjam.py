@@ -8,14 +8,14 @@ import sys
 class Tab(QDialog):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Input Gudang")
         self.setGeometry(200,200,500,300)
-        self.setWindowTitle('Tab Widget')
+        self.setWindowTitle('SimpanPinjam')
+        self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
         vbox = QVBoxLayout()
         tabWidget = QTabWidget()
 
-        tabWidget.addTab(inputSimpan(), 'simpan')
-        tabWidget.addTab(inputPinjam(), 'pinjam')
+        tabWidget.addTab(inputSimpan(), 'Simpan')
+        tabWidget.addTab(inputPinjam(), 'Pinjam')
 
         vbox.addWidget(tabWidget)
 
@@ -33,7 +33,7 @@ class inputSimpan(QWidget):
         right = 0
         width = 400
         height = 600
-        iconName = "img/icon.png"
+        iconName = "view/assets/img/icon.png"
 
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.formGroupBox)
@@ -51,7 +51,7 @@ class inputSimpan(QWidget):
         # self.show()
     def UI(self):
         self.image = QLabel(self)
-        self.image.setPixmap(QPixmap('bg250.png'))
+        self.image.setPixmap(QPixmap('view/assets/img/bg250.png'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
@@ -125,7 +125,7 @@ class inputPinjam(QWidget):
 
     def UI(self):
         self.image = QLabel(self)
-        self.image.setPixmap(QPixmap('bg250.png'))
+        self.image.setPixmap(QPixmap('view/assets/img/bg250.png'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
