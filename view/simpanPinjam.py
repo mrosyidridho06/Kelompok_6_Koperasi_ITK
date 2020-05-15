@@ -51,7 +51,7 @@ class inputSimpan(QWidget):
         # self.show()
     def UI(self):
         self.image = QLabel(self)
-        self.image.setPixmap(QPixmap('view/assets/img/bg250.png'))
+        self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
@@ -125,7 +125,7 @@ class inputPinjam(QWidget):
 
     def UI(self):
         self.image = QLabel(self)
-        self.image.setPixmap(QPixmap('view/assets/img/bg250.png'))
+        self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
