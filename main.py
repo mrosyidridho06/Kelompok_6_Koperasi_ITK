@@ -1,3 +1,6 @@
-from view.menu import menu
+from view.win import mainwin
+import sys
 
-menu()
+main = mainwin()
+main.show()
+sys.exit(main.app.exec_())

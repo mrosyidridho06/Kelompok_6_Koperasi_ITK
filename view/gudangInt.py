@@ -1,41 +1,42 @@
-from PyQt5.QtWidgets import QApplication, QPushButton,QMessageBox, QLineEdit, QVBoxLayout, QSpinBox, QLabel, QFormLayout, QWidget, QGroupBox, QDateEdit
-from PyQt5 import QtGui
+from PyQt5.QtWidgets import *
 from PyQt5 import QtCore
-import sys
 from view.gudangView import LaporanGudang
 from database.GudangORM import GudangORM
-# from Class.gudang import Gudang
+
 
 class inputBarang(QWidget):
     def __init__(self):
-        super().__init__()
-        self.createFormGroupBox()
+        super(inputBarang,self).__init__()
+        # self.setWindowTitle("Koperasi ITK")
+        # self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
+        # self.setGeometry(0, 0, 600, 400)
+        self.Gudangnya()
 
-        title = "Koperasi ITK"
-        left = 0
-        right = 0
-        width = 400
-        height = 600
-        iconName = "view/assets/img/icon.png"
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.formGroupBox)
+        qbok = QVBoxLayout()
+        qbok.addWidget(self.formGroupBox)
 
         self.submitBtn = QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
+        self.backbtn = QPushButton("Back")
+        self.backbtn.clicked.connect(self.back_btn)
 
         self.report = LaporanGudang()
-        laporanBtn = QPushButton("Lihat Laporan")
-        laporanBtn.clicked.connect(self.Lihat)
+        self.laporanBtn = QPushButton("Lihat Laporan")
+        self.laporanBtn.clicked.connect(self.Lihat)
 
-        mainLayout.addWidget(self.submitBtn)
-        mainLayout.addWidget(laporanBtn)
+        hbok = QHBoxLayout()
+        hbok.addWidget(self.backbtn)
+        hbok.addWidget(self.submitBtn)
+        qbok.addLayout(hbok)
+        qbok.addWidget(self.laporanBtn)
 
-        self.setWindowTitle(title)
-        self.setWindowIcon(QtGui.QIcon(iconName))
-        self.setGeometry(left, right, height, width)
-        self.setLayout(mainLayout)
 
-    def createFormGroupBox(self):
+        self.Layot = QFormLayout()
+        self.Layot.addRow(qbok)
+        self.setLayout(self.Layot)
+
+
+    def Gudangnya(self):
         self.formGroupBox = QGroupBox("Input Gudang")
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         self.layout = QFormLayout()
@@ -68,6 +69,11 @@ class inputBarang(QWidget):
     def Lihat(self):
         self.report.show()
 
+    def back_btn(self):
+        from view.menu import Window
+        welcome = Window()
+        self.parent().setCentralWidget(welcome)
+
     def submit_btn(self):
         try:
             x = GudangORM(self.nama.text(),
@@ -91,10 +97,9 @@ class inputBarang(QWidget):
             msg.setWindowTitle("Gagal")
             s = msg.exec_()
 
-if __name__ == "__main__":
-    App = QApplication(sys.argv)
-    App.setStyle("fusion")
-    window = inputBarang()
-    window.show()
-    inBarang = inputBarang()
-    sys.exit(App.exec())
+# def gudangInt():
+#     App = QApplication(sys.argv)
+#     App.setStyle("fusion")
+#     window = inputBarang()
+#     window.show()
+#     sys.exit(App.exec())

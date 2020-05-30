@@ -35,20 +35,12 @@ class SimpanPinjamORM(Base):
     #     else:
     #         print("Data telah Disimpan!")
 
-    @staticmethod
-    def DataSimpanPinjam():
-        # try:
-            session = sessionFactory()
-            return session.query(SimpanPinjamORM).all()
-            session.close()
-            # for simpanpinjam in session.query(SimpanPinjamORM).all():
-            #     print(
-            #         "Id nasabah = {}\nTanggal = {}\nJumlah Simpanan = {}\nJumlah Pinjaman = {}\n===================="
-            #             .format(simpanpinjam.id_nasabah, simpanpinjam.tanggal, simpanpinjam.jumlah_simpan,
-            #                     simpanpinjam.jumlah_pinjam))
-            # session.close()
-        # except Exception as e:
-        #     print("===>", e)
+
+    def showSijam():
+        session = sessionFactory()
+        return session.query(SimpanPinjamORM).all()
+        session.close()
+
 
     @staticmethod
     def deleteSimpanPinjam(id_nasabah):

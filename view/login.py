@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushB
 from PyQt5.QtGui import QFont
 
 app = QApplication([])
-app.setStyle('fusion')
+app.setStyle("fusion")
 mainWindow = QMainWindow()
 mainWindow.setWindowTitle("Koperasi ITK")
 mainWindow.setGeometry(200,200,400,280)

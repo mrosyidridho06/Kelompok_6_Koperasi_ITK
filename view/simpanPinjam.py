@@ -1,62 +1,83 @@
-from PyQt5.QtWidgets import QApplication, QPushButton, QLineEdit, QVBoxLayout,QMessageBox, QSpinBox, QLabel, QFormLayout,  QGroupBox, QDateEdit ,QDialog, QTabWidget, QWidget
+from PyQt5.QtWidgets import *
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
 from database.SimpanPinjamORM import SimpanPinjamORM
+from view.sijamView import simpanPinjam
+
 import sys
 
 class Tab(QDialog):
     def __init__(self):
         super().__init__()
-        self.setGeometry(200,200,500,300)
-        self.setWindowTitle('SimpanPinjam')
-        self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
-        vbox = QVBoxLayout()
-        tabWidget = QTabWidget()
+        # self.setGeometry(200,200,500,300)
+        # self.setWindowTitle('SimpanPinjam')
+        # self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
 
+        tabWidget = QTabWidget()
         tabWidget.addTab(inputSimpan(), 'Simpan')
         tabWidget.addTab(inputPinjam(), 'Pinjam')
 
+        self.report = simpanPinjam()
+        self.lapor = QPushButton("Laporan")
+        self.lapor.clicked.connect(self.Lihat)
+
+        self.backnya = QPushButton("Back")
+        self.backnya.clicked.connect(self.back_btn)
+
+        vbox = QVBoxLayout()
         vbox.addWidget(tabWidget)
-
-
+        vbox.addWidget(self.backnya)
+        vbox.addWidget(self.lapor)
         self.setLayout(vbox)
+
+    def back_btn(self):
+        from view.menu import Window
+        welcome = Window()
+        self.parent().setCentralWidget(welcome)
+
+    def Lihat(self):
+        self.report.show()
 
 class inputSimpan(QWidget):
     def __init__(self):
         super().__init__()
-        self.createFormGroupBox()
-        self.UI()
+        self.setWindowTitle("Koperasi ITK")
+        self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
+        self.setGeometry(0, 0, 600, 400)
 
-        title = "Koperasi ITK"
-        left = 0
-        right = 0
-        width = 400
-        height = 600
-        iconName = "view/assets/img/icon.png"
+        self.isiSimpan()
+        self.background()
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.formGroupBox)
+        qbok = QVBoxLayout()
+        qbok.addWidget(self.formGroupBox)
 
         self.submitBtn = QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
+        # self.backbtn = QPushButton("Back")
+        # self.backbtn.clicked.connect(self.back_btn)
 
-        mainLayout.addWidget(self.submitBtn)
+        hbok = QHBoxLayout()
+        # hbok.addWidget(self.backbtn)
+        hbok.addWidget(self.submitBtn,alignment=QtCore.Qt.AlignRight)
+        qbok.addLayout(hbok)
 
-        self.setWindowTitle(title)
-        self.setWindowIcon(QtGui.QIcon(iconName))
-        self.setGeometry(left, right, height, width)
-        self.setLayout(mainLayout)
 
-        # self.show()
-    def UI(self):
+        self.setLayout(qbok)
+
+    # def back_btn(self):
+    #     from view.menu import Window
+    #     welcome = Window()
+    #     self.parent().setCentralWidget(welcome)
+
+    def background(self):
         self.image = QLabel(self)
         self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
 
-    def createFormGroupBox(self):
+    def isiSimpan(self):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
@@ -72,6 +93,7 @@ class inputSimpan(QWidget):
         layout.addRow("Jumlah Simpan:", self.jumlahsimpan)
 
         self.formGroupBox.setLayout(layout)
+
 
     def submit_btn(self):
         try:
@@ -99,38 +121,43 @@ class inputSimpan(QWidget):
 class inputPinjam(QWidget):
     def __init__(self):
         super().__init__()
-        self.createFormGroupBox()
-        self.UI()
-        title = "Koperasi ITK"
-        left = 0
-        right = 0
-        width = 400
-        height = 600
-        iconName = "img/icon.png"
+        self.setWindowTitle("Koperasi ITK")
+        self.setWindowIcon(QtGui.QIcon("img/icon.png"))
+        self.setGeometry(0, 0, 600, 400)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.formGroupBox)
+        self.isiPinjam()
+        self.background()
+
+        vbok = QVBoxLayout()
+        vbok.addWidget(self.formGroupBox)
 
         self.submitBtn = QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
+        # self.backBtn = QPushButton("Back")
+        # self.backBtn.clicked.connect(self.back_btn)
+        # self.laporanBtn2 = QPushButton("Lihat Laporan")
+        # self.laporanBtn.clicked.connect(self.laporan)
 
-        mainLayout.addWidget(self.submitBtn)
+        hbok = QHBoxLayout()
+        # hbok.addWidget(self.backBtn)
+        hbok.addWidget(self.submitBtn,alignment=QtCore.Qt.AlignRight)
+        vbok.addLayout(hbok)
 
-        self.setWindowTitle(title)
-        self.setWindowIcon(QtGui.QIcon(iconName))
-        self.setGeometry(left, right, height, width)
-        self.setLayout(mainLayout)
+
+        self.setLayout(vbok)
+
 
         # self.show()
 
-    def UI(self):
+    def background(self):
         self.image = QLabel(self)
         self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
         self.image.setGeometry(0,-75,500,400)
         # self.image.move(0,-50)
 
-    def createFormGroupBox(self):
+
+    def isiPinjam(self):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
@@ -147,6 +174,11 @@ class inputPinjam(QWidget):
 
 
         self.formGroupBox.setLayout(layout)
+
+    # def back_btn(self):
+    #     from view.menu import Window
+    #     welcome = Window()
+    #     self.parent().setCentralWidget(welcome)
 
     def submit_btn(self):
         try:
@@ -170,10 +202,10 @@ class inputPinjam(QWidget):
             msg.setWindowTitle("Gagal")
             s = msg.exec_()
 
-if __name__ == "__main__":
-    App = QApplication(sys.argv)
-    App.setStyle('fusion')
-    tabDialog = Tab()
-    tabDialog.show()
-    sys.exit(App.exec())
+# def simpanpinjamInt():
+#     App = QApplication(sys.argv)
+#     App.setStyle('fusion')
+#     tabDialog = Tab()
+#     tabDialog.show()
+#     sys.exit(App.exec())
 

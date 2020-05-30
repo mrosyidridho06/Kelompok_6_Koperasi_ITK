@@ -8,32 +8,22 @@ from view.simpanPinjam import Tab
 
 class Window(QDialog, QMainWindow):
     def __init__(self):
-        super().__init__()
-
-        self.title = "Menu Koperasi"
-        self.top = 500
-        self.left = 200
-        self.width = 400
-        self.height = 100
-
-        self.InitWindow()
-
-    def InitWindow(self):
+        super(Window,self).__init__()
         self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.top, self.left, self.width, self.height)
+        self.setWindowTitle("Menu Koperasi")
+        self.setGeometry(500, 200, 400, 100)
+        self.Tampilan()
+        self.vbox = QVBoxLayout()
+        self.vbox.addWidget(self.groupBox)
 
-        self.createLayout()
-        vbox = QVBoxLayout()
-        vbox.addWidget(self.groupBox)
-
-        self.setLayout(vbox)
-
+        self.setLayout(self.vbox)
 
 
-    def createLayout(self):
+
+
+    def Tampilan(self):
         self.groupBox = QGroupBox('Pilih Menu')
-        hboxlayout = QHBoxLayout()
+        self.hboxlayout = QHBoxLayout()
 
         self.simpanan = Tab()
         # self.setCentralWidget(self.simpanan)
@@ -42,33 +32,43 @@ class Window(QDialog, QMainWindow):
         # self.setCentraWidget(self.gudang)
 
 
-        button1 = QPushButton('Simpan Pinjam', self)
-        button1.setIcon(QtGui.QIcon('kaki.png'))
-        button1.setIconSize(QtCore.QSize(40,40))
-        button1.setMinimumHeight(50)
-        button1.setMinimumWidth(150)
-        hboxlayout.addWidget(button1)
-        button1.clicked.connect(self.simpanPinjam)
+        self.button1 = QPushButton('Simpan Pinjam', self)
+        self.button1.setIcon(QtGui.QIcon('kaki.png'))
+        self.button1.setIconSize(QtCore.QSize(40,40))
+        self.button1.setMinimumHeight(50)
+        self.button1.setMinimumWidth(150)
+        self.hboxlayout.addWidget(self.button1)
+        self.button1.clicked.connect(self.simpanPinjam)
 
-        button2 = QPushButton('Gudang', self)
-        button2.setIcon(QtGui.QIcon('kaki.png'))
-        button2.setIconSize(QtCore.QSize(40,40))
-        button2.setMinimumHeight(50)
-        button2.setMinimumWidth(150)
-        hboxlayout.addWidget(button2)
-        button2.clicked.connect(self.Gudang)
+        self.button2 = QPushButton('Gudang', self)
+        self.button2.setIcon(QtGui.QIcon('kaki.png'))
+        self.button2.setIconSize(QtCore.QSize(40,40))
+        self.button2.setMinimumHeight(50)
+        self.button2.setMinimumWidth(150)
+        self.hboxlayout.addWidget(self.button2)
+        self.button2.clicked.connect(self.Gudang)
 
-        self.groupBox.setLayout(hboxlayout)
+        self.groupBox.setLayout(self.hboxlayout)
 
     def simpanPinjam(self):
-        self.simpanan.show()
+        from view.simpanPinjam import Tab
+        simpan = Tab()
+        self.parent().setCentralWidget(simpan)
+
 
     def Gudang(self):
-        self.gudang.show()
+        from view.gudangInt import inputBarang
+        inputB = inputBarang()
+        self.parent().setCentralWidget(inputB)
+    # def simpanPinjam(self):
+    #     self.parent().simpanPinjamint()
+    #
+    # def Gudang(self):
+    #     self.gudang.show()
 
-def menu():
-    App = QApplication(sys.argv)
-    window = Window()
-    window.show()
-    sys.exit(App.exec())
+# def menu():
+#     App = QApplication(sys.argv)
+#     window = Window()
+#     window.show()
+#     sys.exit(App.exec())
 
