@@ -6,11 +6,6 @@ class QFrameElement(QFrame):
 
     def __init__(self, colorName):
         super().__init__()
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sizePolicy().hasHeightForWidth())
-
         self.setStyleSheet(
             "background: "+colorName+";\n"
             "border : none;\n"
