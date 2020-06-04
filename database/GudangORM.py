@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer
-from database.base import Base, sessionFactory, modelFactory
+from database.base import Base, sessionFactory
 
 
 class GudangORM(Base):
@@ -12,16 +12,23 @@ class GudangORM(Base):
     tanggal_masuk = Column(String)
     harga_barang = Column(String)
 
-    def __init__(self, nama_produk, jumlah_barang, lokasi, tanggal_masuk, harga_barang):
-        session = sessionFactory()
+    def __init__(self, nama_produk, lokasi, tanggal_masuk,jumlah_barang, harga_barang):
         self.nama_produk = nama_produk
         self.jumlah_barang = jumlah_barang
         self.lokasi = lokasi
         self.tanggal_masuk = tanggal_masuk
         self.harga_barang = harga_barang
-        session.add(self)
-        session.commit()
-        session.close()
+
+    def insertGudang(self):
+        try:
+            session = sessionFactory()
+            session.add(self)
+            session.commit()
+            session.close()
+        except Exception as e:
+            print("===>", e)
+        else:
+            print("Data telah Disimpan!")
 
     # @staticmethod
     # def insertGudang(self):
@@ -88,7 +95,6 @@ class GudangORM(Base):
         session.close()
         pass
 
-modelFactory()
 # for i in GudangORM.dataGudang():
 #     print(i.nama_produk)
 

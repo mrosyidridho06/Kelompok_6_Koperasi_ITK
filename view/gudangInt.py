@@ -20,7 +20,6 @@ class inputBarang(QWidget):
         self.backbtn = QPushButton("Back")
         self.backbtn.clicked.connect(self.back_btn)
 
-        self.report = LaporanGudang()
         self.laporanBtn = QPushButton("Lihat Laporan")
         self.laporanBtn.clicked.connect(self.Lihat)
 
@@ -67,6 +66,7 @@ class inputBarang(QWidget):
         self.formGroupBox.setLayout(self.layout)
 
     def Lihat(self):
+        self.report = LaporanGudang()
         self.report.show()
 
     def back_btn(self):
@@ -76,11 +76,11 @@ class inputBarang(QWidget):
 
     def submit_btn(self):
         try:
-            x = GudangORM(self.nama.text(),
+            GudangORM(self.nama.text(),
                         self.lokasi.text(),
                         self.tanggal.text(),
                         self.harga.text(),
-                        self.jumlah.text())
+                        self.jumlah.text()).insertGudang()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
@@ -96,6 +96,7 @@ class inputBarang(QWidget):
             msg.setInformativeText(f"KESALAHAN : {e}")
             msg.setWindowTitle("Gagal")
             s = msg.exec_()
+
 
 # def gudangInt():
 #     App = QApplication(sys.argv)

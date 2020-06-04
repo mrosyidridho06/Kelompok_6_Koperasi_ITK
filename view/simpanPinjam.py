@@ -7,6 +7,7 @@ from view.sijamView import simpanPinjam
 
 import sys
 
+
 class Tab(QDialog):
     def __init__(self):
         super().__init__()
@@ -18,7 +19,6 @@ class Tab(QDialog):
         tabWidget.addTab(inputSimpan(), 'Simpan')
         tabWidget.addTab(inputPinjam(), 'Pinjam')
 
-        self.report = simpanPinjam()
         self.lapor = QPushButton("Laporan")
         self.lapor.clicked.connect(self.Lihat)
 
@@ -33,11 +33,12 @@ class Tab(QDialog):
 
     def back_btn(self):
         from view.menu import Window
-        welcome = Window()
-        self.parent().setCentralWidget(welcome)
+        self.parent().setCentralWidget(Window())
 
     def Lihat(self):
+        self.report = simpanPinjam()
         self.report.show()
+
 
 class inputSimpan(QWidget):
     def __init__(self):
@@ -59,9 +60,8 @@ class inputSimpan(QWidget):
 
         hbok = QHBoxLayout()
         # hbok.addWidget(self.backbtn)
-        hbok.addWidget(self.submitBtn,alignment=QtCore.Qt.AlignRight)
+        hbok.addWidget(self.submitBtn, alignment=QtCore.Qt.AlignRight)
         qbok.addLayout(hbok)
-
 
         self.setLayout(qbok)
 
@@ -74,7 +74,7 @@ class inputSimpan(QWidget):
         self.image = QLabel(self)
         self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
-        self.image.setGeometry(0,-75,500,400)
+        self.image.setGeometry(0, -75, 500, 400)
         # self.image.move(0,-50)
 
     def isiSimpan(self):
@@ -94,19 +94,18 @@ class inputSimpan(QWidget):
 
         self.formGroupBox.setLayout(layout)
 
-
     def submit_btn(self):
         try:
-            x = SimpanPinjamORM(self.nama.text(),
+            SimpanPinjamORM(self.nama.text(),
                                 self.tanggal.text(),
                                 self.jumlahsimpan.text(),
-                                0)
+                                0).insertSimpanPinjam()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
             msg.setText("Data Telah Disimpan")
             msg.setWindowTitle("Berhasil")
-            s = msg.exec_()
+            msg.exec_()
             # self.clear_btn()
         except Exception as e:
             msg = QMessageBox()
@@ -140,12 +139,10 @@ class inputPinjam(QWidget):
 
         hbok = QHBoxLayout()
         # hbok.addWidget(self.backBtn)
-        hbok.addWidget(self.submitBtn,alignment=QtCore.Qt.AlignRight)
+        hbok.addWidget(self.submitBtn, alignment=QtCore.Qt.AlignRight)
         vbok.addLayout(hbok)
 
-
         self.setLayout(vbok)
-
 
         # self.show()
 
@@ -153,25 +150,23 @@ class inputPinjam(QWidget):
         self.image = QLabel(self)
         self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
         # self.image.resize(500,400)
-        self.image.setGeometry(0,-75,500,400)
+        self.image.setGeometry(0, -75, 500, 400)
         # self.image.move(0,-50)
-
 
     def isiPinjam(self):
         self.formGroupBox = QGroupBox()
         self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
         layout = QFormLayout()
 
-        self.nama =  QLineEdit()
-        layout.addRow("Nama Nasabah :",self.nama)
+        self.nama = QLineEdit()
+        layout.addRow("Nama Nasabah :", self.nama)
 
         self.tanggal = QDateEdit()
         self.tanggal.setCalendarPopup(True)
         layout.addRow(QLabel("Tanggal :"), self.tanggal)
 
         self.jumlahpinjam = QLineEdit()
-        layout.addRow("Jumlah Pinjam:",self.jumlahpinjam)
-
+        layout.addRow("Jumlah Pinjam:", self.jumlahpinjam)
 
         self.formGroupBox.setLayout(layout)
 
@@ -182,10 +177,10 @@ class inputPinjam(QWidget):
 
     def submit_btn(self):
         try:
-            x = SimpanPinjamORM(self.nama.text(),
-                        self.tanggal.text(),
-                        0,
-                        self.jumlahpinjam.text())
+            SimpanPinjamORM(self.nama.text(),
+                                self.tanggal.text(),
+                                0,
+                                self.jumlahpinjam.text()).insertSimpanPinjam()
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
@@ -208,4 +203,3 @@ class inputPinjam(QWidget):
 #     tabDialog = Tab()
 #     tabDialog.show()
 #     sys.exit(App.exec())
-

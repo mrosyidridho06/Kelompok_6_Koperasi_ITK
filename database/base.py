@@ -1,18 +1,17 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine('sqlite:///database/kantin.db')
 Base = declarative_base()
+db_path = os.path.join(os.path.dirname(__file__), 'koperasi.db')
+db_uri = 'sqlite:///{}'.format(db_path)
+engine = create_engine(db_uri)
 
-def modelFactory():
-    return Base.metadata.create_all(bind=engine)
-
-
-SessionFactory = sessionmaker(bind=engine)
-SessionFactory.configure(bind=engine)
+__SessionFactory = sessionmaker(bind=engine)
 
 def sessionFactory():
-    return SessionFactory()
-modelFactory()
+    Base.metadata.create_all(engine)
+    return __SessionFactory()
