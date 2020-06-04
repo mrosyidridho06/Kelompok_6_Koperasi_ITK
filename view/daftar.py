@@ -1,6 +1,7 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget, QMessageBox
 from PyQt5.QtGui import QFont
 
+from database.akunORM import AkunOrm
 from view.login import login
 
 class daftar(QWidget):
@@ -45,10 +46,35 @@ class daftar(QWidget):
         ledit3.move(170, 180)
 
         signupBtn = QPushButton('Daftar', self)
-        signupBtn.clicked.connect(lambda: self.loginfungsi(ledit.text(), ledit2.text(), ledit3.text()))
+        signupBtn.clicked.connect(lambda: self.register(ledit.text(), ledit2.text(), ledit3.text()))
 
         backBtn = QPushButton('Kembali', self)
         backBtn.clicked.connect(lambda: self.parent().setCentralWidget(login()))
 
         signupBtn.move(50, 220)
         backBtn.move(270, 220)
+
+    def register(self, nama, email, password):
+        print("tes")
+        if nama != "" and email != "" and password != "":
+            print("tes")
+            try:
+                AkunOrm(nama, email, password).insert()
+                masge =QMessageBox()
+                masge.setWindowTitle("Success")
+                masge.setText("User berhasil dibuat")
+                masge.exec_()
+                self.parent().setCentralWidget(login())
+            except Exception as eror:
+                masge = QMessageBox()
+                masge.setIcon(QMessageBox.Warning)
+                masge.setText(eror)
+                masge.setWindowTitle("Error")
+                masge.exec_()
+        else:
+            print("tes3")
+            masge = QMessageBox()
+            masge.setIcon(QMessageBox.Warning)
+            masge.setText("errror")
+            masge.setWindowTitle("Error")
+            masge.exec_()

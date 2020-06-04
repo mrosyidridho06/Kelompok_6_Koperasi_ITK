@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dafb72e-e992-492e-a407-7539da95e47f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/GudangORM.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/GudangORM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/gudangInt.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/gudangInt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/simpanPinjam.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/simpanPinjam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/koperasi.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/koperasi.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/daftar.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/daftar.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,13 +49,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/view/simpanPinjam.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+            <state relative-caret-position="3485">
+              <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/view/daftar.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#94#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,6 +135,7 @@
       <find>Base</find>
       <find>sijamV</find>
       <find>inputSimpan</find>
+      <find>jumlahSim</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,7 +150,6 @@
         <option value="$PROJECT_DIR$/database/base.py" />
         <option value="$PROJECT_DIR$/database/akunORM.py" />
         <option value="$PROJECT_DIR$/view/win.py" />
-        <option value="$PROJECT_DIR$/view/daftar.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/view/login.py" />
         <option value="$PROJECT_DIR$/Class/Autentikasi.py" />
@@ -148,10 +158,11 @@
         <option value="$PROJECT_DIR$/view/gudangInt.py" />
         <option value="$PROJECT_DIR$/database/GudangORM.py" />
         <option value="$PROJECT_DIR$/view/simpanPinjam.py" />
+        <option value="$PROJECT_DIR$/view/daftar.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="557" />
     <option name="y" value="-8" />
     <option name="width" value="697" />
@@ -347,8 +358,8 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49923196" visible="true" weight="0.122023806" />
-      <window_info id="Structure" order="1" sideWeight="0.50076807" side_tool="true" weight="0.122023806" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.122023806" />
+      <window_info id="Structure" order="1" sideWeight="0.5010707" side_tool="true" weight="0.122023806" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
@@ -451,30 +462,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/daftar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="30" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#94#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Class/login.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/akunORM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,6 +549,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/view/simpanPinjam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3485">
+          <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/akunORM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="36" selection-start-line="34" selection-start-column="36" selection-end-line="34" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/SimpanPinjamORM.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -568,12 +579,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/simpanPinjam.py">
+    <entry file="file://$PROJECT_DIR$/view/daftar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="108" column="46" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+        <state relative-caret-position="232">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#94#0" expanded="true" />
           </folding>
         </state>
       </provider>
