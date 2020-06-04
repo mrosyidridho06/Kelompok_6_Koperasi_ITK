@@ -3,6 +3,9 @@ from PyQt5 import QtCore
 from view.gudangView import LaporanGudang
 from database.GudangORM import GudangORM
 
+from view.fileElement.QPushButton import QPushButtonGeneral
+from view.fileElement.QFrame import QFrameElement
+from view.fileElement.QLabel import QLabelElement
 
 class inputBarang(QWidget):
     def __init__(self):
@@ -10,60 +13,71 @@ class inputBarang(QWidget):
         # self.setWindowTitle("Koperasi ITK")
         # self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
         # self.setGeometry(0, 0, 600, 400)
-        self.Gudangnya()
 
-        qbok = QVBoxLayout()
-        qbok.addWidget(self.formGroupBox)
+        #--------main Layout-------
+        vbox = QGridLayout()
 
-        self.submitBtn = QPushButton("Submit")
+        #--------Button-------
+        frame = QFrameElement("rgb(235, 243, 223)")
+        frame.setContentsMargins(100, 50, 100, 50)
+
+        boxLayout = QGridLayout(frame)
+        boxLayout.setSpacing(20)
+
+        self.submitBtn = QPushButtonGeneral("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
-        self.backbtn = QPushButton("Back")
+
+        self.backbtn = QPushButtonGeneral("Back")
         self.backbtn.clicked.connect(self.back_btn)
 
         self.laporanBtn = QPushButton("Lihat Laporan")
         self.laporanBtn.clicked.connect(self.Lihat)
 
-        hbok = QHBoxLayout()
-        hbok.addWidget(self.backbtn)
-        hbok.addWidget(self.submitBtn)
-        qbok.addLayout(hbok)
-        qbok.addWidget(self.laporanBtn)
-
-
-        self.Layot = QFormLayout()
-        self.Layot.addRow(qbok)
-        self.setLayout(self.Layot)
-
-
-    def Gudangnya(self):
-        self.formGroupBox = QGroupBox("Input Gudang")
-        self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
-        self.layout = QFormLayout()
-
+        #-------Gudang input-------
+        self.namaLabel = QLabelElement("Nama Barang : ")
         self.nama = QLineEdit(self)
+        self.nama.setStyleSheet("background : rgb(241, 255, 230);")
         self.nama.setPlaceholderText("Masukkan Nama Barang ")
-        self.layout.addRow("Nama Barang :", self.nama)
 
+        self.lokasiLabel = QLabelElement("Lokasi : ")
         self.lokasi = QLineEdit(self)
+        self.lokasi.setStyleSheet("background : rgb(241, 255, 230);")
         self.lokasi.setPlaceholderText("Masukkan Lokasi Barang ")
-        self.layout.addRow("Lokasi :", self.lokasi)
 
+        self.tanggalLabel = QLabelElement("Tanggal Masuk : ")
         self.tanggal = QDateEdit()
+        self.tanggal.setStyleSheet("background : rgb(241, 255, 230);")
         self.tanggal.setCalendarPopup(True)
-        self.layout.addRow(QLabel("Tanggal Masuk :"), self.tanggal)
 
+        self.hargaLabel = QLabelElement("Harga : ")
         self.harga = QLineEdit(self)
+        self.harga.setStyleSheet("background : rgb(241, 255, 230);")
         self.harga.setPlaceholderText("Masukkan Harga ")
-        self.layout.addRow("Harga :", self.harga)
 
-
+        self.jumlahLabel = QLabelElement("Jumlah : ")
         self.jumlah = QSpinBox(self)
-        self.layout.addRow("Jumlah :", self.jumlah)
+        self.jumlah.setStyleSheet("background : rgb(241, 255, 230);")
 
-        # self.tombol = QPushButton("Submit")
-        # self.tombol.clicked.connect(self.submit_btn)
-        # self.layout.addRow(self.tombol)
-        self.formGroupBox.setLayout(self.layout)
+        #--------layout input--------
+        boxLayout.addWidget(self.namaLabel, 1, 0)
+        boxLayout.addWidget(self.nama, 1, 1,1,8)
+        boxLayout.addWidget(self.lokasiLabel, 2, 0)
+        boxLayout.addWidget(self.lokasi, 2, 1,1,8)
+        boxLayout.addWidget(self.tanggalLabel, 3, 0)
+        boxLayout.addWidget(self.tanggal, 3, 1,1,8)
+        boxLayout.addWidget(self.hargaLabel, 4, 0)
+        boxLayout.addWidget(self.harga, 4, 1,1,8)
+        boxLayout.addWidget(self.jumlahLabel, 5, 0)
+        boxLayout.addWidget(self.jumlah, 5, 1,1,8)
+
+        #--------layout button--------
+        boxLayout.addWidget(self.submitBtn, 6, 5,1,4)
+        boxLayout.addWidget(self.backbtn, 6, 1,1,4)
+        boxLayout.addWidget(self.laporanBtn, 7, 1,1,8)
+
+        vbox.addWidget(frame)
+        self.setLayout(vbox)
+        self.show()
 
     def Lihat(self):
         self.report = LaporanGudang()
