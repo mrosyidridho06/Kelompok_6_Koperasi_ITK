@@ -177,7 +177,6 @@ class inputPinjam(QWidget):
 
         hbok.addWidget(frame)
         self.setLayout(hbok)
-        self.show()
 
     # def back_btn(self):
     #     from view.menu import Window
