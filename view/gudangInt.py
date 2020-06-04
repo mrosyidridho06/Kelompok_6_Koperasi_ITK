@@ -77,7 +77,6 @@ class inputBarang(QWidget):
 
         vbox.addWidget(frame)
         self.setLayout(vbox)
-        self.show()
 
     def Lihat(self):
         self.report = LaporanGudang()

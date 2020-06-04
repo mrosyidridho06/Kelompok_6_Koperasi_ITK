@@ -12,7 +12,7 @@ class GudangORM(Base):
     tanggal_masuk = Column(String)
     harga_barang = Column(String)
 
-    def __init__(self, nama_produk, lokasi, tanggal_masuk,jumlah_barang, harga_barang):
+    def __init__(self, nama_produk, lokasi, tanggal_masuk, jumlah_barang, harga_barang):
         self.nama_produk = nama_produk
         self.jumlah_barang = jumlah_barang
         self.lokasi = lokasi

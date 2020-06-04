@@ -7,9 +7,6 @@ from view.sijamView import simpanPinjam
 
 import sys
 
-from view.fileElement.QPushButton import QPushButtonGeneral
-from view.fileElement.QFrame import QFrameElement
-from view.fileElement.QLabel import QLabelElement
 
 class Tab(QDialog):
     def __init__(self):
@@ -18,32 +15,20 @@ class Tab(QDialog):
         # self.setWindowTitle('SimpanPinjam')
         # self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
 
-        #--------main Layout-------
-        vbox = QGridLayout()
-
-        frame = QFrameElement("rgb(235, 243, 223)")
-
-        boxLayout = QGridLayout(frame)
-        boxLayout.setSpacing(20)
-
-        self.report = simpanPinjam()
-        self.lapor = QPushButtonGeneral("Laporan")
-        self.lapor.setStyleSheet("height : 20%;" "color : white;" "background-color : rgb(184, 220, 124);")
-        self.lapor.clicked.connect(self.Lihat)
-
-        self.backnya = QPushButtonGeneral("Back")
-        self.backnya.setStyleSheet("height : 20%;" "color : white;" "background-color : rgb(184, 220, 124);")
-        self.backnya.clicked.connect(self.back_btn)
-
-        #--------Tab Widget-------
         tabWidget = QTabWidget()
         tabWidget.addTab(inputSimpan(), 'Simpan')
         tabWidget.addTab(inputPinjam(), 'Pinjam')
 
-        #--------layouting--------
+        self.lapor = QPushButton("Laporan")
+        self.lapor.clicked.connect(self.Lihat)
+
+        self.backnya = QPushButton("Back")
+        self.backnya.clicked.connect(self.back_btn)
+
+        vbox = QVBoxLayout()
         vbox.addWidget(tabWidget)
-        vbox.addWidget(self.lapor,1,0)
-        vbox.addWidget(self.backnya,2,0)
+        vbox.addWidget(self.backnya)
+        vbox.addWidget(self.lapor)
         self.setLayout(vbox)
 
     def back_btn(self):
@@ -62,45 +47,52 @@ class inputSimpan(QWidget):
         self.setWindowIcon(QtGui.QIcon("view/assets/img/icon.png"))
         self.setGeometry(0, 0, 600, 400)
 
-        #--------main Layout-------
-        qbok = QGridLayout()
+        self.isiSimpan()
+        self.background()
 
-        frame = QFrameElement("rgb(235, 243, 223)")
-        frame.setContentsMargins(100, 50, 100, 50)
+        qbok = QVBoxLayout()
+        qbok.addWidget(self.formGroupBox)
 
-        boxLayout = QGridLayout(frame)
-        boxLayout.setSpacing(20)
-
-        #-------input-------
-        self.namaLabel = QLabelElement("Nama Nasabah : ")
-        self.nama = QLineEdit(self)
-        self.nama.setStyleSheet("background : rgb(241, 255, 230);")
-
-        self.tanggalLabel = QLabelElement("Tanggal : ")
-        self.tanggal = QDateEdit()
-        self.tanggal.setStyleSheet("background : rgb(241, 255, 230);")
-        self.tanggal.setCalendarPopup(True)
-
-        self.jumlahLabel = QLabelElement("Jumlah Simpan : ")
-        self.jumlah = QLineEdit(self)
-        self.jumlah.setStyleSheet("background : rgb(241, 255, 230);")
-
-        #--------Button simpan--------
-        self.submitBtn = QPushButtonGeneral("Submit")
+        self.submitBtn = QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
+        # self.backbtn = QPushButton("Back")
+        # self.backbtn.clicked.connect(self.back_btn)
 
-        #--------layouting--------
-        boxLayout.addWidget(self.namaLabel, 0,0)
-        boxLayout.addWidget(self.nama, 0,1,1,5)
-        boxLayout.addWidget(self.tanggalLabel, 1,0)
-        boxLayout.addWidget(self.tanggal, 1,1,1,5)
-        boxLayout.addWidget(self.jumlahLabel, 2,0)
-        boxLayout.addWidget(self.jumlah, 2,1,1,5)
-        boxLayout.addWidget(self.submitBtn, 3,5,1,1,QtCore.Qt.AlignBottom)
+        hbok = QHBoxLayout()
+        # hbok.addWidget(self.backbtn)
+        hbok.addWidget(self.submitBtn, alignment=QtCore.Qt.AlignRight)
+        qbok.addLayout(hbok)
 
-        qbok.addWidget(frame)
         self.setLayout(qbok)
-        self.show()
+
+    # def back_btn(self):
+    #     from view.menu import Window
+    #     welcome = Window()
+    #     self.parent().setCentralWidget(welcome)
+
+    def background(self):
+        self.image = QLabel(self)
+        self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
+        # self.image.resize(500,400)
+        self.image.setGeometry(0, -75, 500, 400)
+        # self.image.move(0,-50)
+
+    def isiSimpan(self):
+        self.formGroupBox = QGroupBox()
+        self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
+        layout = QFormLayout()
+
+        self.nama = QLineEdit()
+        layout.addRow("Nama Nasabah :", self.nama)
+
+        self.tanggal = QDateEdit()
+        self.tanggal.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal :"), self.tanggal)
+
+        self.jumlahsimpan = QLineEdit()
+        layout.addRow("Jumlah Simpan:", self.jumlahsimpan)
+
+        self.formGroupBox.setLayout(layout)
 
     def submit_btn(self):
         try:
@@ -132,45 +124,51 @@ class inputPinjam(QWidget):
         self.setWindowIcon(QtGui.QIcon("img/icon.png"))
         self.setGeometry(0, 0, 600, 400)
 
-        #--------main Layout-------
-        hbok = QGridLayout()
+        self.isiPinjam()
+        self.background()
 
-        frame = QFrameElement("rgb(235, 243, 223)")
-        frame.setContentsMargins(100, 50, 100, 50)
+        vbok = QVBoxLayout()
+        vbok.addWidget(self.formGroupBox)
 
-        boxLayout = QGridLayout(frame)
-        boxLayout.setSpacing(20)
-
-        #-------input-------
-        self.namaLabel = QLabelElement("Nama Nasabah : ")
-        self.nama = QLineEdit(self)
-        self.nama.setStyleSheet("background : rgb(241, 255, 230);")
-
-        self.tanggalLabel = QLabelElement("Tanggal : ")
-        self.tanggal = QDateEdit()
-        self.tanggal.setStyleSheet("background : rgb(241, 255, 230);")
-        self.tanggal.setCalendarPopup(True)
-
-        self.jumlahLabel = QLabelElement("Jumlah Pinjam : ")
-        self.jumlah = QLineEdit(self)
-        self.jumlah.setStyleSheet("background : rgb(241, 255, 230);")
-
-        #--------Button pinjam--------
-        self.submitBtn = QPushButtonGeneral("Submit")
+        self.submitBtn = QPushButton("Submit")
         self.submitBtn.clicked.connect(self.submit_btn)
+        # self.backBtn = QPushButton("Back")
+        # self.backBtn.clicked.connect(self.back_btn)
+        # self.laporanBtn2 = QPushButton("Lihat Laporan")
+        # self.laporanBtn.clicked.connect(self.laporan)
 
-        #--------layouting--------
-        boxLayout.addWidget(self.namaLabel, 0,0)
-        boxLayout.addWidget(self.nama, 0,1,1,5)
-        boxLayout.addWidget(self.tanggalLabel, 1,0)
-        boxLayout.addWidget(self.tanggal, 1,1,1,5)
-        boxLayout.addWidget(self.jumlahLabel, 2,0)
-        boxLayout.addWidget(self.jumlah, 2,1,1,5)
-        boxLayout.addWidget(self.submitBtn, 3,5,1,1,QtCore.Qt.AlignBottom)
+        hbok = QHBoxLayout()
+        # hbok.addWidget(self.backBtn)
+        hbok.addWidget(self.submitBtn, alignment=QtCore.Qt.AlignRight)
+        vbok.addLayout(hbok)
 
-        hbok.addWidget(frame)
-        self.setLayout(hbok)
-        self.show()
+        self.setLayout(vbok)
+
+        # self.show()
+
+    def background(self):
+        self.image = QLabel(self)
+        self.image.setPixmap(QPixmap('view/assets/img/bg.jpg'))
+        # self.image.resize(500,400)
+        self.image.setGeometry(0, -75, 500, 400)
+        # self.image.move(0,-50)
+
+    def isiPinjam(self):
+        self.formGroupBox = QGroupBox()
+        self.formGroupBox.setAlignment(QtCore.Qt.AlignCenter)
+        layout = QFormLayout()
+
+        self.nama = QLineEdit()
+        layout.addRow("Nama Nasabah :", self.nama)
+
+        self.tanggal = QDateEdit()
+        self.tanggal.setCalendarPopup(True)
+        layout.addRow(QLabel("Tanggal :"), self.tanggal)
+
+        self.jumlahpinjam = QLineEdit()
+        layout.addRow("Jumlah Pinjam:", self.jumlahpinjam)
+
+        self.formGroupBox.setLayout(layout)
 
     # def back_btn(self):
     #     from view.menu import Window
