@@ -75,6 +75,6 @@ class daftar(QWidget):
             print("tes3")
             masge = QMessageBox()
             masge.setIcon(QMessageBox.Warning)
-            masge.setText("errror")
+            masge.setText("Kolom harus terisi Semua")
             masge.setWindowTitle("Error")
             masge.exec_()

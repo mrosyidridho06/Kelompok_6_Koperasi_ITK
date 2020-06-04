@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget, QMessageBox
 from PyQt5.QtGui import QFont
 
 from Class.Autentikasi import Autentikasi
@@ -38,6 +38,7 @@ class login(QWidget):
         txt.move(50, 137)
         ledit2.resize(180, 25)
         ledit2.move(170, 140)
+        ledit2.setEchoMode(QLineEdit.Password)
 
         loginBtn = QPushButton('Masuk', self)
         loginBtn.clicked.connect(lambda: self.loginfungsi(ledit.text(),ledit2.text()))
@@ -54,6 +55,12 @@ class login(QWidget):
         if auth.getStatusLogin() == True:
             self.mainscreen = mainwin()
             self.parent().setCentralWidget(self.mainscreen)
+        else:
+            masge = QMessageBox()
+            masge.setIcon(QMessageBox.Warning)
+            masge.setText("Kolom harus terisi Semua")
+            masge.setWindowTitle("Error")
+            masge.exec_()
 
     def tomboldaftar(self):
         from view.daftar import daftar

@@ -43,7 +43,6 @@ class Window(QDialog, QMainWindow):
 
         vbox.addWidget(frame)
         self.setLayout(vbox)
-        self.show()
 
     def simpanPinjam(self):
         from view.simpanPinjam import Tab

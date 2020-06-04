@@ -88,25 +88,34 @@ class inputBarang(QWidget):
         self.parent().setCentralWidget(welcome)
 
     def submit_btn(self):
-        try:
-            GudangORM(self.nama.text(),
-                        self.lokasi.text(),
-                        self.tanggal.text(),
-                        self.harga.text(),
-                        self.jumlah.text()).insertGudang()
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Information)
+        if self.nama.text() !="" and self.lokasi.text() !="" and self.tanggal.text() !="" and self.harga.text() !="" and self.jumlah.text() !="":
+            try:
+                GudangORM(self.nama.text(),
+                            self.lokasi.text(),
+                            self.tanggal.text(),
+                            self.harga.text(),
+                            self.jumlah.text()).insertGudang()
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
 
-            msg.setText("Data Telah Disimpan")
-            msg.setWindowTitle("Berhasil")
-            s = msg.exec_()
-            # self.clear_btn()
-        except Exception as e:
+                msg.setText("Data Telah Disimpan")
+                msg.setWindowTitle("Berhasil")
+                s = msg.exec_()
+                # self.clear_btn()
+            except Exception as e:
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Information)
+
+                msg.setText("Data Gagal Input")
+                msg.setInformativeText(f"KESALAHAN : {e}")
+                msg.setWindowTitle("Gagal")
+                s = msg.exec_()
+        else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Information)
 
             msg.setText("Data Gagal Input")
-            msg.setInformativeText(f"KESALAHAN : {e}")
+            msg.setInformativeText(f"Kolom harus terisi semua")
             msg.setWindowTitle("Gagal")
             s = msg.exec_()
 
