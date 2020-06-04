@@ -30,7 +30,7 @@ class inputBarang(QWidget):
         self.backbtn = QPushButtonGeneral("Back")
         self.backbtn.clicked.connect(self.back_btn)
 
-        self.laporanBtn = QPushButton("Lihat Laporan")
+        self.laporanBtn = QPushButtonGeneral("Lihat Laporan")
         self.laporanBtn.clicked.connect(self.Lihat)
 
         #-------Gudang input-------
