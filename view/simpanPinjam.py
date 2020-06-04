@@ -99,7 +99,6 @@ class inputSimpan(QWidget):
 
         qbok.addWidget(frame)
         self.setLayout(qbok)
-        self.show()
 
     def submit_btn(self):
         if self.nama.text() != "" and self.jumlahsimpan.text() != "":

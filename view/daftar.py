@@ -54,12 +54,12 @@ class daftar(QWidget):
         signupBtn.move(50, 220)
         backBtn.move(270, 220)
 
-    def register(self, nama, email, password):
+    def register(self, nama, password, email):
         print("tes")
-        if nama != "" and email != "" and password != "":
+        if nama != "" and password != "" and nama != "":
             print("tes")
             try:
-                AkunOrm(nama, email, password).insert()
+                AkunOrm(nama, password, email).insert()
                 masge =QMessageBox()
                 masge.setWindowTitle("Success")
                 masge.setText("User berhasil dibuat")

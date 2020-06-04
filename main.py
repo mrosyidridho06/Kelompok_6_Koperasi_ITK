@@ -7,7 +7,7 @@ import sys
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kargs):
         super(MainWindow, self).__init__(*args, **kargs)
-        self.setWindowTitle("Kantin ITK")
+        self.setWindowTitle("Koperasi ITK")
         self.setGeometry(140, 50, 1100, 650)
         self.setMinimumSize(900, 506)
         self.resize(900, 506)

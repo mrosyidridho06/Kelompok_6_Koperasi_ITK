@@ -7,13 +7,14 @@ class AkunOrm(Base):
 
     id = Column(Integer, primary_key=True)
     nama = Column(String, nullable=False)
-    email = Column(String, nullable=False)
     password = Column(String, nullable=False)
+    email = Column(String, nullable=False)
 
-    def __init__(self, nama, email, password, ):
+    def __init__(self, nama, password, email, ):
         self.nama = nama
-        self.email = email
         self.password = password
+        self.email = email
+
 
     # CRUD
     def insert(self):
@@ -32,8 +33,8 @@ class AkunOrm(Base):
         try:
             session = sessionFactory()
             for akun in session.query(AkunOrm).all():
-                print("ID = {}, Nama = {}, Email = {}, Password = {},".format(akun.id, akun.nama,
-                                                                              akun.email,
-                                                                              akun.password))
+                print("ID = {}, Nama = {}, Password = {}, Email = {},".format(akun.id, akun.nama,
+                                                                              akun.password,
+                                                                              akun.email))
         except Exception as e:
             print("Error -->", e)
