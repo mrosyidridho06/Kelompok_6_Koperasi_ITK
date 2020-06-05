@@ -1,13 +1,34 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QWidget, QMessageBox
+from PyQt5.QtWidgets import *
 from PyQt5.QtGui import QFont
 
 from database.akunORM import AkunOrm
 from view.login import login
+from view.fileElement.QFrame import QFrameElement
+from view.fileElement.QLabel import QLabelElement
+from view.fileElement.QPushButton import QPushButtonLogin
 
 class daftar(QWidget):
     def __init__(self):
         super(daftar,self).__init__()
         print("suk")
+
+        #--------main Layout-------
+        vbox = QGridLayout()
+
+        frame = QFrameElement("rgb(235, 243, 223)")
+        frame.setContentsMargins(250, 130, 250, 130)
+
+        boxLayout = QGridLayout(frame)
+        boxLayout.setSpacing(20)
+
+        #--------Button-------
+        signupBtn = QPushButtonLogin('Daftar')
+        signupBtn.clicked.connect(lambda: self.register(ledit1.text(), ledit2.text(), ledit3.text()))
+
+        backBtn = QPushButtonLogin('Kembali')
+        backBtn.clicked.connect(lambda: self.parent().setCentralWidget(login()))
+
+        #-------login atribut-------
         fontStyle = QFont()
         fontStyle.setPointSize(14)
         fontStyle.setFamily('eras bold ITC')
@@ -19,40 +40,38 @@ class daftar(QWidget):
         iniLabel = QLabel("", self)
         iniLabel.setText("Daftar")
         iniLabel.setFont(fontStyle)
-        iniLabel.move(160, 50)
 
-        ledit = QLineEdit('', self)
-        txt = QLabel("", self)
-        txt.setText("Username")
-        txt.setFont(fontStyle1)
-        txt.move(50, 97)
-        ledit.resize(180, 25)
-        ledit.move(170, 100)
+        leditLabel1 = QLabelElement("Username : ")
+        ledit1 = QLineEdit(self)
+        ledit1.setStyleSheet("background : rgb(241, 255, 230);")
+        ledit1.setPlaceholderText("Masukkan Username")
 
-        ledit2 = QLineEdit('', self)
-        txt = QLabel("", self)
-        txt.setText("Password")
-        txt.setFont(fontStyle1)
-        txt.move(50, 137)
-        ledit2.resize(180, 25)
-        ledit2.move(170, 140)
+        leditLabel2 = QLabelElement("Password : ")
+        ledit2 = QLineEdit(self)
+        ledit2.setStyleSheet("background : rgb(241, 255, 230);")
+        ledit2.setPlaceholderText("Masukkan Password")
 
-        ledit3 = QLineEdit('', self)
-        txt = QLabel("", self)
-        txt.setText("Email")
-        txt.setFont(fontStyle1)
-        txt.move(50, 187)
-        ledit3.resize(180, 25)
-        ledit3.move(170, 180)
+        leditLabel3 = QLabelElement("Email : ")
+        ledit3 = QLineEdit(self)
+        ledit3.setStyleSheet("background : rgb(241, 255, 230);")
+        ledit3.setPlaceholderText("Masukkan Email")
 
-        signupBtn = QPushButton('Daftar', self)
-        signupBtn.clicked.connect(lambda: self.register(ledit.text(), ledit2.text(), ledit3.text()))
+        #--------layout input--------
+        boxLayout.addWidget(iniLabel,0,3,1,1)
+        boxLayout.addWidget(leditLabel1,1,0)
+        boxLayout.addWidget(ledit1,1,1,1,9)
+        boxLayout.addWidget(leditLabel2,2,0)
+        boxLayout.addWidget(ledit2,2,1,1,9)
+        boxLayout.addWidget(leditLabel3,3,0)
+        boxLayout.addWidget(ledit3,3,1,1,9)
 
-        backBtn = QPushButton('Kembali', self)
-        backBtn.clicked.connect(lambda: self.parent().setCentralWidget(login()))
+        #--------layout button--------
+        boxLayout.addWidget(signupBtn,4,4,1,3)
+        boxLayout.addWidget(backBtn,4,7,1,3)
 
-        signupBtn.move(50, 220)
-        backBtn.move(270, 220)
+        vbox.addWidget(frame)
+        self.setLayout(vbox)
+
 
     def register(self, nama, password, email):
         print("tes")
