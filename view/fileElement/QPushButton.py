@@ -34,3 +34,16 @@ class QPushButtonGeneral(QPushButton):
 
         self.setFont(font)
 
+
+class QPushButtonLogin(QPushButton):
+    def __init__(self, text):
+        super().__init__()
+
+        #---------text setting---------
+        self.setStyleSheet("height : 27%;" "color : white;" "background-color : rgb(184, 220, 124);")
+        self.setText(text)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+
+        self.setFont(font)
