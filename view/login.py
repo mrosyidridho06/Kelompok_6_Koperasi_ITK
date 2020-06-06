@@ -1,87 +1,84 @@
-import sys
 from PyQt5.QtWidgets import *
+import sys
 from PyQt5.QtGui import QFont
-from PyQt5 import QtCore
+from PyQt5.QtCore import Qt
+from PyQt5 import QtGui
+from database.UsersORM import UsersORM
+from view.assets.custom import QPushButtonLogin
 
-from Class.Autentikasi import Autentikasi
-from view.win import mainwin
-from view.fileElement.QFrame import QFrameElement
-from view.fileElement.QLabel import QLabelElement
-from view.fileElement.QPushButton import QPushButtonLogin
-
-
-class login(QWidget):
+class Login(QWidget):
+    app = QApplication(sys.argv)
+    app.setStyle('fusion')
     def __init__(self):
-        super(login, self).__init__()
+        super(Login,self).__init__()
 
-        #--------main Layout-------
-        vbox = QGridLayout()
+        self.layout = QFormLayout()
 
-        frame = QFrameElement("rgb(235, 243, 223)")
-        frame.setContentsMargins(250, 150, 250, 150)
+        fontt = QFont()
+        fontt.setPointSize(13)
+        fontt.setFamily('arial')
+        fontt.setBold(True)
 
-        boxLayout = QGridLayout(frame)
-        boxLayout.setSpacing(20)
+        self.label1 = QLabel('LOGIN FORM')
+        self.label1.setFont(fontt)
+        # self.label2 = QLabel('Silahkan Login dulu!')
+        self.label3 = QLabel('Username')
+        self.label4 = QLabel('Password')
 
-        #--------Button-------
-        loginBtn = QPushButtonLogin("Login")
-        loginBtn.clicked.connect(lambda: self.loginfungsi(ledit1.text(),ledit2.text()))
+        self.user = QLineEdit()
+        self.user.setPlaceholderText("Masukkan Username")
+        self.user.setFixedWidth(300)
+        self.user.setFixedHeight(30)
 
-        signupBtn = QPushButtonLogin("Daftar")
-        signupBtn.clicked.connect(lambda: self.tomboldaftar())
+        self.pw = QLineEdit()
+        self.pw.setEchoMode(QLineEdit.Password)
+        self.pw.setFixedWidth(300)
+        self.pw.setFixedHeight(30)
 
-        #-------login atribut-------
-        fontStyle = QFont()
-        fontStyle.setPointSize(14)
-        fontStyle.setFamily('eras bold ITC')
+        self.submit = QPushButtonLogin("view/assets/img/gudang.png","Login",self.login)
 
-        fontStyle1 = QFont()
-        fontStyle1.setPointSize(13)
-        fontStyle1.setFamily('arial')
 
-        iniLabel = QLabel("", self)
-        iniLabel.setText("Login")
-        iniLabel.setFont(fontStyle)
+        qbok = QVBoxLayout()
+        qbok.addSpacing(10)
+        qbok.addWidget(self.label1, alignment=Qt.AlignHCenter)
+        # qbok.addWidget(self.label2, alignment=Qt.AlignHCenter)
+        qbok.addSpacing(15)
+        qbok.addWidget(self.label3, alignment=Qt.AlignHCenter)
+        qbok.addWidget(self.user, alignment=Qt.AlignHCenter)
+        qbok.addSpacing(10)
+        qbok.addWidget(self.label4, alignment=Qt.AlignHCenter)
+        qbok.addWidget(self.pw, alignment=Qt.AlignHCenter)
+        qbok.addSpacing(30)
+        qbok.addWidget(self.submit, alignment=Qt.AlignHCenter)
 
-        leditLabel1 = QLabelElement("Username : ")
-        ledit1 = QLineEdit(self)
-        ledit1.setStyleSheet("background : rgb(241, 255, 230);")
-        ledit1.setPlaceholderText("Masukkan Username")
+        self.layout.addRow(qbok)
 
-        leditLabel2 = QLabelElement("Password : ")
-        ledit2 = QLineEdit(self)
-        ledit2.setStyleSheet("background : rgb(241, 255, 230);")
-        ledit2.setPlaceholderText("Masukkan Password")
-        ledit2.setEchoMode(QLineEdit.Password)
 
-        #--------layout input--------
-        boxLayout.addWidget(iniLabel,0,3,1,1)
-        boxLayout.addWidget(leditLabel1,1,0)
-        boxLayout.addWidget(ledit1,1,1,1,9)
-        boxLayout.addWidget(leditLabel2,2,0)
-        boxLayout.addWidget(ledit2,2,1,1,9)
+        self.layout.setAlignment(Qt.AlignHCenter)
+        self.layout.setSpacing(10)
+        self.setLayout(self.layout)
 
-        #--------layout button--------
-        boxLayout.addWidget(signupBtn,4,4,1,3)
-        boxLayout.addWidget(loginBtn,4,7,1,3)
+    def login(self):
+        msg = QMessageBox()
+        query = UsersORM.showUsers()
+        ada = False
+        for row in query:
+            if self.user.text() == row.username:
+                ada = True
+                if self.pw.text() == row.password:
 
-        vbox.addWidget(frame)
-        self.setLayout(vbox)
+                    from view.menu import Window
+                    x = Window()
+                    self.parent().setCentralWidget(x)
+                else:
+                    msg.setWindowTitle("Salah Password")
+                    msg.setText('Password anda salah!!')
+                    msg.setIcon(QMessageBox.Critical)
+                    msg.exec_()
+                    break
 
-    def loginfungsi(self, email, password):
-        auth = Autentikasi(email, password)
-        auth.login()
-        if auth.getStatusLogin() == True:
-            self.mainscreen = mainwin()
-            self.parent().setCentralWidget(self.mainscreen)
-        else:
-            masge = QMessageBox()
-            masge.setIcon(QMessageBox.Warning)
-            masge.setText("Kolom harus terisi Semua")
-            masge.setWindowTitle("Error")
-            masge.exec_()
-
-    def tomboldaftar(self):
-        from view.daftar import daftar
-        self.parent().setCentralWidget(daftar())
-
+        if not ada:
+            msg.setWindowTitle("Username tidak ada")
+            msg.setText('Username anda tidak ditemukan')
+            msg.setIcon(QMessageBox.Warning)
+            msg.exec_()
